@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-09-26T04:48:05.190Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.42" etag="DwQVkKSS76uHPhyRMx78" version="20.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-09-26T04:49:22.981Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.42" etag="9Xf3VVkWSOlqp3LQJlxP" version="20.3.6" type="github">
   <diagram id="JP_RaQpOYj671g2Xv2aF" name="Page-1">
-    <mxGraphModel dx="459" dy="1753" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="100" pageHeight="100" math="0" shadow="0">
+    <mxGraphModel dx="514" dy="1807" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="100" pageHeight="100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -121,7 +121,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="fglvI5U9ycG8OZFpoDJh-31" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;Phase&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ EnemyInfo: EnemyInfo&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ songInfo: SongInfo&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ cutscene : Cutscene&amp;nbsp;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-          <mxGeometry x="951" y="-1030" width="180" height="100" as="geometry" />
+          <mxGeometry x="936" y="-1037.5" width="180" height="100" as="geometry" />
         </mxCell>
         <mxCell id="fglvI5U9ycG8OZFpoDJh-74" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="fglvI5U9ycG8OZFpoDJh-32" target="fglvI5U9ycG8OZFpoDJh-15" edge="1">
           <mxGeometry relative="1" as="geometry">
@@ -186,21 +186,17 @@
         <mxCell id="fglvI5U9ycG8OZFpoDJh-83" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;GimickNote&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ abstract void Gimmick()&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
           <mxGeometry x="2256" y="-552.5" width="150" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="l__9duM-5doDQuWa7u0o-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="fglvI5U9ycG8OZFpoDJh-105" target="fglvI5U9ycG8OZFpoDJh-27" edge="1">
+        <mxCell id="1MREnG7QXFrM7_ZCu1wO-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="fglvI5U9ycG8OZFpoDJh-105" target="fglvI5U9ycG8OZFpoDJh-31">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="fglvI5U9ycG8OZFpoDJh-105" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;SongInfo&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ bpm : float&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ music : AudioClip&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ notes: NoteInfo&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
           <mxGeometry x="1150" y="-1060" width="180" height="145" as="geometry" />
         </mxCell>
-        <mxCell id="l__9duM-5doDQuWa7u0o-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" parent="1" source="fglvI5U9ycG8OZFpoDJh-106" target="fglvI5U9ycG8OZFpoDJh-27" edge="1">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="1145" y="-864" />
-            </Array>
-          </mxGeometry>
+        <mxCell id="1MREnG7QXFrM7_ZCu1wO-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;" edge="1" parent="1" source="fglvI5U9ycG8OZFpoDJh-106" target="fglvI5U9ycG8OZFpoDJh-105">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="fglvI5U9ycG8OZFpoDJh-106" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;NoteInfo&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ beat&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ lane1Note : NoteType enum&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ lane2Note : NoteType enum&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ lane3Note : NoteType enum&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-          <mxGeometry x="1150" y="-900" width="180" height="145" as="geometry" />
+          <mxGeometry x="1150" y="-895" width="180" height="145" as="geometry" />
         </mxCell>
         <mxCell id="fglvI5U9ycG8OZFpoDJh-113" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=diamond;startFill=1;endArrow=none;endFill=0;" parent="1" source="fglvI5U9ycG8OZFpoDJh-112" target="fglvI5U9ycG8OZFpoDJh-20" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -254,7 +250,7 @@
           <mxGeometry x="180" y="-430" width="266" height="130" as="geometry" />
         </mxCell>
         <mxCell id="fglvI5U9ycG8OZFpoDJh-153" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;EnemyAnimationManager : Mono&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;idk what to connect to or&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;what should be here&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-          <mxGeometry x="930" y="-785" width="206" height="70" as="geometry" />
+          <mxGeometry x="840" y="-735" width="206" height="70" as="geometry" />
         </mxCell>
         <mxCell id="fglvI5U9ycG8OZFpoDJh-156" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;NoteAnimationManager&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;idk what to connect to or&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;what should be here&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
           <mxGeometry x="2300" y="-860" width="170" height="70" as="geometry" />
