@@ -60,9 +60,11 @@
     <Compile Include="Assets\Scripts\MusicManagement\Radio.cs" />
     <Compile Include="Assets\Scripts\RhythmGame\Data\ScriptableObjects\Charts\Chart.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Enemy.cs" />
+    <Compile Include="Assets\Scripts\PeopleTypes\Person.cs" />
     <Compile Include="Assets\Scripts\RhythmGame\SongManager.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\RhythmGame\Spawners\NoteSpawner.cs" />
+    <Compile Include="Assets\Scripts\GameManagers\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Being.cs" />
     <Compile Include="Assets\Scripts\RhythmGame\Spawners\NoteSpawnerGroup.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Player.cs" />
@@ -74,8 +76,6 @@
     <Compile Include="Assets\Scripts\RhythmGame\Notes\NoteTypes\SafeNote.cs" />
     <Compile Include="Assets\Scripts\RhythmGame\Notes\Note.cs" />
     <Compile Include="Assets\Scripts\RhythmGame\Data\ScriptableObjects\SongInfo\SongInfo.cs" />
-    <Compile Include="Assets\Scripts\GameManagers\NewBehaviourScript.cs" />
-    <Compile Include="Assets\Scripts\PeopleTypes\Person.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -768,6 +768,10 @@
       <Project>{D6037C16-7390-BBD2-11F9-9B23ABFFACF6}</Project>
       <Name>Unity.VisualScripting.Flow</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.InputSystem.csproj">
+      <Project>{515D6978-2D0E-038E-D622-183990617CB8}</Project>
+      <Name>Unity.InputSystem</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.Rider.Editor.csproj">
       <Project>{CDA7292A-5FD5-C7D1-C710-F43FB0B02E3A}</Project>
       <Name>Unity.Rider.Editor</Name>
@@ -811,10 +815,6 @@
     <ProjectReference Include="Unity.VisualScripting.State.csproj">
       <Project>{5410D5C0-9967-B3A9-FB61-CE4D9EE6BA5B}</Project>
       <Name>Unity.VisualScripting.State</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.InputSystem.csproj">
-      <Project>{515D6978-2D0E-038E-D622-183990617CB8}</Project>
-      <Name>Unity.InputSystem</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
