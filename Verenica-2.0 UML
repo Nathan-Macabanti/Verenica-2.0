@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-09-27T01:21:17.137Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.42" etag="ebMFMrp_dNRNKz7ZMzJj" version="20.3.6" type="github">
+<mxfile host="app.diagrams.net" modified="2022-09-27T01:31:17.193Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.42" etag="2XbkC5fzVh5ZxXQVVbBr" version="20.3.6" type="github">
   <diagram id="JP_RaQpOYj671g2Xv2aF" name="Page-1">
-    <mxGraphModel dx="1680" dy="2114" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="100" pageHeight="100" math="0" shadow="0">
+    <mxGraphModel dx="782" dy="1708" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="100" pageHeight="100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -210,9 +210,6 @@
         <mxCell id="fglvI5U9ycG8OZFpoDJh-117" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;ExampleGimmickNote&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
           <mxGeometry x="2186" y="-400" width="150" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="fglvI5U9ycG8OZFpoDJh-126" value="Damage { PlayerDamage(); }" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
-          <mxGeometry x="376" y="-452.5" width="170" height="20" as="geometry" />
-        </mxCell>
         <mxCell id="fglvI5U9ycG8OZFpoDJh-131" value="SINGLTON FUNCTIONS and VARIABLES:&lt;br&gt;public static MyClass instance&lt;br&gt;void Awake() { if(instance == null) { instance == this; }}" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
           <mxGeometry x="590" y="-990" width="300" height="50" as="geometry" />
         </mxCell>
@@ -244,7 +241,7 @@
           <mxGeometry x="1336" y="-313.75" width="180" height="117.5" as="geometry" />
         </mxCell>
         <mxCell id="fglvI5U9ycG8OZFpoDJh-152" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;PlayerAnimationsManager : Mono&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px&quot;&gt;idk what to connect to or&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px 0px 0px 4px&quot;&gt;what should be here&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
-          <mxGeometry x="180" y="-430" width="266" height="130" as="geometry" />
+          <mxGeometry x="185" y="-380" width="266" height="130" as="geometry" />
         </mxCell>
         <mxCell id="fglvI5U9ycG8OZFpoDJh-153" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;EnemyAnimationManager : Mono&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;idk what to connect to or&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;what should be here&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" parent="1" vertex="1">
           <mxGeometry x="840" y="-735" width="206" height="70" as="geometry" />
@@ -276,8 +273,11 @@
         <mxCell id="0R2Iw63BI5NHEEA4TE-8-2" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;BeatInfo&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ beat&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ lane1Note : NoteType enum&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ lane2Note : NoteType enum&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ lane3Note : NoteType enum&lt;br&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;&lt;br&gt;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
           <mxGeometry x="950" y="-897.5" width="180" height="107.5" as="geometry" />
         </mxCell>
-        <mxCell id="0R2Iw63BI5NHEEA4TE-8-3" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;PlayerInputManager : Mono&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- offsetPERFECT : float&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- offsetGOOD : float&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- offsetBAD : float&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- currentNote : Note&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- void CheckIfCanJudge();&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- void JudgeHit(); += onKeyInput;&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
-          <mxGeometry x="180" y="-610" width="244" height="145" as="geometry" />
+        <mxCell id="0R2Iw63BI5NHEEA4TE-8-7" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;startSize=14;endSize=14;sourcePerimeterSpacing=8;targetPerimeterSpacing=8;endFill=0;" edge="1" parent="1" source="0R2Iw63BI5NHEEA4TE-8-3" target="fglvI5U9ycG8OZFpoDJh-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0R2Iw63BI5NHEEA4TE-8-3" value="&lt;p style=&quot;margin: 0px ; margin-top: 4px ; text-align: center&quot;&gt;&lt;b&gt;PlayerMovement: Mono&lt;/b&gt;&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- position : int&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;- points : Transform[ 3 ]&lt;/p&gt;&lt;hr size=&quot;1&quot;&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ void Slide()&lt;/p&gt;&lt;p style=&quot;margin: 0px ; margin-left: 4px&quot;&gt;+ void Jump&lt;/p&gt;" style="verticalAlign=top;align=left;overflow=fill;fontSize=12;fontFamily=Helvetica;html=1;" vertex="1" parent="1">
+          <mxGeometry x="220" y="-590" width="244" height="145" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
