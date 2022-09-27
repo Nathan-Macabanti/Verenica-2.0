@@ -117,6 +117,7 @@
 -define:ENABLE_TERRAIN
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
+-define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
@@ -331,6 +332,7 @@
 -r:"C:/Users/Nathan/Documents/GitHub/Verenica-2.0/Verenica 2.0/Library/PackageCache/com.unity.testtools.codecoverage@1.0.1/lib/ReportGenerator/ReportGeneratorMerged.dll"
 -r:"C:/Users/Nathan/Documents/GitHub/Verenica-2.0/Verenica 2.0/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.EditorCoroutines.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.InputSystem.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Performance.Profile-Analyzer.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Rider.Editor.ref.dll"
@@ -356,16 +358,25 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/Scripts/BeingsAndComponents/Being.cs"
+"Assets/Scripts/BeingsAndComponents/Components/Player/PlayerController.cs"
+"Assets/Scripts/BeingsAndComponents/Components/Player/PlayerMovement.cs"
+"Assets/Scripts/BeingsAndComponents/Enemy.cs"
+"Assets/Scripts/BeingsAndComponents/Player.cs"
 "Assets/Scripts/GameManagers/EventManager.cs"
+"Assets/Scripts/GameManagers/NewBehaviourScript.cs"
 "Assets/Scripts/MusicManagement/Radio.cs"
+"Assets/Scripts/PeopleTypes/Person.cs"
 "Assets/Scripts/RhythmGame/Data/NoteInfo.cs"
 "Assets/Scripts/RhythmGame/Data/ScriptableObjects/Charts/Chart.cs"
 "Assets/Scripts/RhythmGame/Data/ScriptableObjects/SongInfo/SongInfo.cs"
 "Assets/Scripts/RhythmGame/Notes/Note.cs"
 "Assets/Scripts/RhythmGame/Notes/NoteMovement/Path.cs"
+"Assets/Scripts/RhythmGame/Notes/NoteTypes/SafeNote.cs"
 "Assets/Scripts/RhythmGame/SongManager.cs"
 "Assets/Scripts/RhythmGame/Spawners/NoteSpawner.cs"
 "Assets/Scripts/RhythmGame/Spawners/NoteSpawnerGroup.cs"
+"Assets/Scripts/Utils/MyMath.cs"
 "Assets/Scripts/Utils/Utils.cs"
 -langversion:9.0
 

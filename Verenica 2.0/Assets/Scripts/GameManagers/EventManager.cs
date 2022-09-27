@@ -20,6 +20,13 @@ public class EventManager : MonoBehaviour
         IntializeSingleton();
     }
 
+    #region EVENT UNITY ACTION
     public event UnityAction<float, int, NoteType> onNoteSpawn;
+    public event UnityAction onLose;
+    #endregion
+
+    #region INVOKE FUNCTIONS
     public void NoteSpawn(float beat, int spawner, NoteType note) { onNoteSpawn?.Invoke(beat, spawner, note); }
+    public void Lose() { onLose?.Invoke(); }
+    #endregion
 }

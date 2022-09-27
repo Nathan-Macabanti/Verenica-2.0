@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Note : MonoBehaviour
+public abstract class Note : MonoBehaviour
 {
     protected float beat;
     protected NotePath path;
@@ -29,13 +29,17 @@ public class Note : MonoBehaviour
 
     public virtual void Move()
     {
+        //Caluclate the distance and time you need to travel to the destination so that you will land on beat
         float songPosInBeats = SongManager.GetInstance().GetSongPositionInBeats();
         float beatOffset = SongManager.GetInstance().beatOffset;
         float timeToDestination = (beat - songPosInBeats);
         float distance = (beatOffset - timeToDestination) / beatOffset;
 
+        //Interpolate the Note
         Vector3 source = this.path.source.position;
         Vector3 destination = this.path.destination.position;
         transform.position = Vector3.Lerp(source, destination, distance);
     }
+
+    public abstract void Action();
 }
