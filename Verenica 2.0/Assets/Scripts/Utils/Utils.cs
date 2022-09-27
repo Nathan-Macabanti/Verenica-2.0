@@ -6,6 +6,6 @@ public static class Utils
 {
     public static void SingletonErrorMessage(object obj)
     {
-        Debug.LogError("Multiple instances of " + obj.GetType().Name + " exists");
+        throw new System.Exception("Multiple instances of " + obj.GetType().Name + " exists");
     }
 }

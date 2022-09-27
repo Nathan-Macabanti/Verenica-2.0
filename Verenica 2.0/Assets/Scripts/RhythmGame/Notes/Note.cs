@@ -1,28 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public abstract class Note : MonoBehaviour
 {
     protected float beat;
     protected NotePath path;
     protected int KeyToPress;
+    protected IObjectPool<Note> _pool;
 
-    // Start is called before the first frame update
-    void Start()
+    public void initialize(NotePath _path, float _beat, int _keyToPress)
     {
-        
-    }
+        //Set the position to the start
+        transform.position = _path.source.position;
 
-    public void initialize(NotePath path, float beat, int keyToPress)
-    {
-        this.path = path;
-        this.beat = beat;
-        this.KeyToPress = keyToPress;
+        this.path = _path;
+        this.beat = _beat;
+        this.KeyToPress = _keyToPress;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move();
     }
@@ -39,13 +38,21 @@ public abstract class Note : MonoBehaviour
         float distance = (beatOffset - timeToDestination) / beatOffset;
 
         //Interpolate the Note
-        Debug.Log(distance);
+        //Debug.Log(distance);
         Vector3 source = this.path.source.position;
         Vector3 destination = this.path.destination.position;
         transform.position = Vector3.Lerp(source, destination, distance);
+        
+        //Check if at destination
+        if (distance >= 1.0f) { ReturnToPool(); }
+    }
 
-        if(distance >= 1.0f) { Destroy(this.gameObject); }
+    public void ReturnToPool()
+    {
+        _pool.Release(this);
     }
 
     public abstract void Action();
+
+    public void SetPool(IObjectPool<Note> pool) => _pool = pool; 
 }

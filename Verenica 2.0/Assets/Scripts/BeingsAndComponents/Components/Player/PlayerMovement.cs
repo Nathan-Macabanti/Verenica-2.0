@@ -48,6 +48,5 @@ public class PlayerMovement : MonoBehaviour
     public void CenterCharacter()
     {
         currentPosition = 1;
-        
     }
 }

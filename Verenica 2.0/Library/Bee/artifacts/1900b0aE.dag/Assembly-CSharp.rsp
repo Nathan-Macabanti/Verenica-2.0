@@ -366,7 +366,6 @@
 "Assets/Scripts/BeingsAndComponents/Enemy.cs"
 "Assets/Scripts/BeingsAndComponents/Player.cs"
 "Assets/Scripts/MusicManagement/Radio.cs"
-"Assets/Scripts/PeopleTypes/Person.cs"
 "Assets/Scripts/RhythmGame/Data/NoteInfo.cs"
 "Assets/Scripts/RhythmGame/Notes/Note.cs"
 "Assets/Scripts/RhythmGame/Notes/NoteMovement/Path.cs"

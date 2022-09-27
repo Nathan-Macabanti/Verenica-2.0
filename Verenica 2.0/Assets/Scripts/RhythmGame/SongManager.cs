@@ -90,15 +90,15 @@ public class SongManager : MonoBehaviour
     {
         if (CurrentBeatInfo().lane_1 != NoteType.None)
         {
-            EventManager.NoteSpawn(beat, 0, CurrentBeatInfo().lane_1);
+            EventManager.InvokeNoteSpawn(beat, 0, CurrentBeatInfo().lane_1);
         }
         if (CurrentBeatInfo().lane_2 != NoteType.None)
         {
-            EventManager.NoteSpawn(beat, 1, CurrentBeatInfo().lane_2);
+            EventManager.InvokeNoteSpawn(beat, 1, CurrentBeatInfo().lane_2);
         }
         if (CurrentBeatInfo().lane_3 != NoteType.None)
         {
-            EventManager.NoteSpawn(beat, 2, CurrentBeatInfo().lane_3);
+            EventManager.InvokeNoteSpawn(beat, 2, CurrentBeatInfo().lane_3);
         }
     }
 

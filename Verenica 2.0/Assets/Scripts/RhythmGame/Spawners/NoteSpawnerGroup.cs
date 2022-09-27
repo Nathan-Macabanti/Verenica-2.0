@@ -14,42 +14,49 @@ public class NoteSpawnerGroup : MonoBehaviour
     }
     public static NoteSpawnerGroup GetInstance() { return instance; }
     #endregion
-
-    [SerializeField] private NoteSpawner[] spawners;
-
-    [Header("Prefabs")]
-    [SerializeField] private DangerNote dangerNote;
-    [SerializeField] private SafeNote safeNote;
-
-    private ObjectPool<Note> danger_note_pool;
-    private ObjectPool<Note> safe_note_pool;
     #region Subscribe to event
-
-
     private void OnEnable()
     {
-        EventManager.onNoteSpawn += Spawn;
+        EventManager.OnNoteSpawn += Spawn;
     }
 
     private void OnDisable()
     {
-        EventManager.onNoteSpawn -= Spawn;
+        EventManager.OnNoteSpawn -= Spawn;
     }
     #endregion
 
+    [SerializeField] private NoteSpawner[] spawners;
+
+    [Header("Note Prefab")]
+    public Note DangerNote;
+    public Note DangerNote2;
+    public Note SafeNote;
+
+    public ObjectPool<Note> danger_Note_Pool;
+    public ObjectPool<Note> safe_Note_Pool;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        IntializePool(safe_note_pool, safeNote);
-        IntializePool(danger_note_pool, dangerNote);
+        IntializeSingleton();
+        IntializeAllPool();
     }
 
-    private void IntializePool(ObjectPool<Note> pool, Note prefab)
+    #region Initialize Pools
+    private void IntializeAllPool()
     {
-        ObjectPool<Note> referencePool = pool;
-        referencePool = new ObjectPool<Note>(() =>
+        InitializeDangerNotePool();
+        InitializeSafeNotePool();
+    }
+
+    private void InitializeDangerNotePool()
+    {
+        danger_Note_Pool = new ObjectPool<Note>(() =>
         {
-            return Instantiate(prefab);
+            var note = Instantiate(DangerNote);
+            note.SetPool(danger_Note_Pool);
+            return note;
         }, note =>
         {
             note.gameObject.SetActive(true); //OnGet
@@ -59,15 +66,39 @@ public class NoteSpawnerGroup : MonoBehaviour
         }, note =>
         {
             Destroy(note.gameObject); //OnDestroy
-        }, false, 50, 50);
-
-        Debug.Log("Initialized " + prefab.name + " Pool");
+        }, false, 10, 30);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void InitializeSafeNotePool()
     {
-        
+        safe_Note_Pool = new ObjectPool<Note>(() =>
+        {
+            var note = Instantiate(SafeNote);
+            note.SetPool(safe_Note_Pool);
+            return note;
+        }, note =>
+        {
+            note.gameObject.SetActive(true); //OnGet
+        }, note =>
+        {
+            note.gameObject.SetActive(false); //OnRelease
+        }, note =>
+        {
+            Destroy(note.gameObject); //OnDestroy
+        }, false, 10, 30);
+    }
+
+    public void ChangeNote()
+    {
+        var temp = DangerNote;
+        DangerNote = DangerNote2;
+        DangerNote2 = temp;
+    }
+    #endregion
+
+    private void Update()
+    {
+        Debug.Log(danger_Note_Pool.CountActive.ToString() + " " + danger_Note_Pool.CountInactive.ToString());
     }
 
     public void Spawn(float beat, int index, NoteType type)
@@ -75,27 +106,31 @@ public class NoteSpawnerGroup : MonoBehaviour
         if(type == NoteType.Danger)
         {
             //Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "DANGER");
-            InitializeNote(beat, index, type, dangerNote);
+            InitializeNote(beat, index, type, danger_Note_Pool);
         }
         else if (type == NoteType.Safe)
         {
             //Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "SAFE");
-            InitializeNote(beat, index, type, safeNote);
+            InitializeNote(beat, index, type, safe_Note_Pool);
         }
     }
 
-    public void InitializeNote(float beat, int index, NoteType type, Note note)
+    public void InitializeNote(float beat, int index, NoteType type, ObjectPool<Note> pool)
     {
         //Spawner info
-        //Note note = danger_note_pool.Get();
+        Note note = pool.Get();
+        if (note == null) throw new System.Exception("No note exists");
+        
         NoteSpawner spawner = spawners[index];
         NotePath path = spawner.GetPath();
         int key = spawner.GetKey();
 
         //Instantiate Note
         Vector3 source = spawner.GetPath().source.position;
-        Note temp_note = null;
-        temp_note = Instantiate(note, source, Quaternion.identity);
-        temp_note.initialize(path, beat, key);
+        note.transform.position = spawner.GetPath().source.position;
+        //Note temp_note = ObjectPool.GetInstance().GetFromPool(tag, source, Quaternion.identity);
+
+        //temp_note = Instantiate(note, source, Quaternion.identity);
+        note.initialize(path, beat, key);
     }
 }

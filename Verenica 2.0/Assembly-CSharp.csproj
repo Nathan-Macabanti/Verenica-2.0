@@ -60,7 +60,6 @@
     <Compile Include="Assets\Scripts\MusicManagement\Radio.cs" />
     <Compile Include="Assets\ScriptableObjects\Charts\Chart.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Enemy.cs" />
-    <Compile Include="Assets\Scripts\PeopleTypes\Person.cs" />
     <Compile Include="Assets\Scripts\RhythmGame\SongManager.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\RhythmGame\Spawners\NoteSpawner.cs" />
@@ -71,11 +70,11 @@
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
     <Compile Include="Assets\Scripts\RhythmGame\Data\NoteInfo.cs" />
+    <Compile Include="Assets\Scripts\RhythmGame\Notes\NoteTypes\DangerNote.cs" />
     <Compile Include="Assets\Scripts\Utils\MyMath.cs" />
     <Compile Include="Assets\Scripts\RhythmGame\Notes\NoteTypes\SafeNote.cs" />
     <Compile Include="Assets\Scripts\RhythmGame\Notes\Note.cs" />
     <Compile Include="Assets\ScriptableObjects\SongInfo\SongInfo.cs" />
-    <Compile Include="Assets\Scripts\RhythmGame\Notes\NoteTypes\DangerNote.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
