@@ -18,26 +18,30 @@ public class NoteSpawnerGroup : MonoBehaviour
     [SerializeField] private NoteSpawner[] spawners;
 
     [Header("Prefabs")]
+    [SerializeField] private DangerNote dangerNote;
     [SerializeField] private SafeNote safeNote;
 
-    private ObjectPool<Note> note_pool;
+    private ObjectPool<Note> danger_note_pool;
+    private ObjectPool<Note> safe_note_pool;
     #region Subscribe to event
+
 
     private void OnEnable()
     {
-        EventManager.GetInstance().onNoteSpawn += Spawn;
+        EventManager.onNoteSpawn += Spawn;
     }
 
     private void OnDisable()
     {
-        EventManager.GetInstance().onNoteSpawn -= Spawn;
+        EventManager.onNoteSpawn -= Spawn;
     }
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        IntializePool(note_pool, safeNote);
+        IntializePool(safe_note_pool, safeNote);
+        IntializePool(danger_note_pool, dangerNote);
     }
 
     private void IntializePool(ObjectPool<Note> pool, Note prefab)
@@ -56,6 +60,8 @@ public class NoteSpawnerGroup : MonoBehaviour
         {
             Destroy(note.gameObject); //OnDestroy
         }, false, 50, 50);
+
+        Debug.Log("Initialized " + prefab.name + " Pool");
     }
 
     // Update is called once per frame
@@ -68,15 +74,28 @@ public class NoteSpawnerGroup : MonoBehaviour
     {
         if(type == NoteType.Danger)
         {
-            Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "DANGER");
-            //Note note = note_pool.Get();
-            //spawners[index].SpawnNote(beat, note);
+            //Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "DANGER");
+            InitializeNote(beat, index, type, dangerNote);
         }
         else if (type == NoteType.Safe)
         {
-            Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "SAFE");
-            //Note note = note_pool.Get();
-            //spawners[index].SpawnNote(beat, note);
+            //Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "SAFE");
+            InitializeNote(beat, index, type, safeNote);
         }
+    }
+
+    public void InitializeNote(float beat, int index, NoteType type, Note note)
+    {
+        //Spawner info
+        //Note note = danger_note_pool.Get();
+        NoteSpawner spawner = spawners[index];
+        NotePath path = spawner.GetPath();
+        int key = spawner.GetKey();
+
+        //Instantiate Note
+        Vector3 source = spawner.GetPath().source.position;
+        Note temp_note = null;
+        temp_note = Instantiate(note, source, Quaternion.identity);
+        temp_note.initialize(path, beat, key);
     }
 }

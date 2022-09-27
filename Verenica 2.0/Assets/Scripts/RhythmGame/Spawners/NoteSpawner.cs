@@ -6,13 +6,7 @@ public class NoteSpawner : MonoBehaviour
 {
     [SerializeField] private NotePath path;
     [SerializeField] private int key;
-    private void Start()
-    {
-        
-    }
 
-    public void SpawnNote(float beat, Note note)
-    {
-        note.initialize(path, beat, key);
-    }
+    public NotePath GetPath() { return path; }
+    public int GetKey() { return key; }
 }

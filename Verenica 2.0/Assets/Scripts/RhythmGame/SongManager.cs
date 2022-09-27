@@ -31,9 +31,8 @@ public class SongManager : MonoBehaviour
     private int index;
     private Chart chartCopy;
     
-
-    [HideInInspector] public float beatOffset;
-    [HideInInspector] public float BPM;
+    public float beatOffset;
+    public float BPM;
     #endregion
 
     // Start is called before the first frame update
@@ -70,40 +69,36 @@ public class SongManager : MonoBehaviour
     private void CalculateBeat()
     {
         songPosition = (float)AudioSettings.dspTime - this.dspTime;
-        songPositionInBeats = songPosition / secondsPerBeat;
+        songPositionInBeats = (float)songPosition / (float)secondsPerBeat;
     }
 
     private void CheckIfCanSpawn()
     {
         if (index >= chartCopy.beats.Length) return; //IF THE INDEX IS LESS THAN THE AMOUNT IN THE CHART
         
-        float spawnTime = songPositionInBeats - beatOffset;
+        //SPAWN 
+        float spawnTime = songPositionInBeats + beatOffset;
         float currentBeat = CurrentBeatInfo().beat;
         if (currentBeat < spawnTime)
         {
             CallSpawnEvent(currentBeat);
             index++;
         }
-        else
-        {
-            index = 0;
-        }
-
     }
 
     private void CallSpawnEvent(float beat)
     {
         if (CurrentBeatInfo().lane_1 != NoteType.None)
         {
-            EventManager.GetInstance().NoteSpawn(beat, 0, CurrentBeatInfo().lane_1);
+            EventManager.NoteSpawn(beat, 0, CurrentBeatInfo().lane_1);
         }
         if (CurrentBeatInfo().lane_2 != NoteType.None)
         {
-            EventManager.GetInstance().NoteSpawn(beat, 1, CurrentBeatInfo().lane_2);
+            EventManager.NoteSpawn(beat, 1, CurrentBeatInfo().lane_2);
         }
         if (CurrentBeatInfo().lane_3 != NoteType.None)
         {
-            EventManager.GetInstance().NoteSpawn(beat, 2, CurrentBeatInfo().lane_3);
+            EventManager.NoteSpawn(beat, 2, CurrentBeatInfo().lane_3);
         }
     }
 

@@ -19,7 +19,7 @@ public class Player : Being
     protected override void Die()
     {
         isDead = true;
-        EventManager.GetInstance().Lose();
+        EventManager.Lose();
 
         //base.Die();
     }
