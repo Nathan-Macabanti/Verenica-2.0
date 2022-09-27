@@ -29,7 +29,8 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        this.transform.position = slidePoints[currentPosition].position;
+        if(currentPosition < slidePoints.Length)
+            this.transform.position = slidePoints[currentPosition].position;
     }
 
     public void Slide(int value)

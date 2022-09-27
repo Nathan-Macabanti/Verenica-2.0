@@ -75,12 +75,12 @@ public class SongManager : MonoBehaviour
 
     private void CheckIfCanSpawn()
     {
+        if (index >= chartCopy.beats.Length) return; //IF THE INDEX IS LESS THAN THE AMOUNT IN THE CHART
+        
         float spawnTime = songPositionInBeats - beatOffset;
         float currentBeat = CurrentBeatInfo().beat;
-        
-        if (index < chartCopy.beats.Length && currentBeat < spawnTime)
+        if (currentBeat < spawnTime)
         {
-            Debug.Log(index < chartCopy.beats.Length);
             CallSpawnEvent(currentBeat);
             index++;
         }
@@ -88,6 +88,7 @@ public class SongManager : MonoBehaviour
         {
             index = 0;
         }
+
     }
 
     private void CallSpawnEvent(float beat)

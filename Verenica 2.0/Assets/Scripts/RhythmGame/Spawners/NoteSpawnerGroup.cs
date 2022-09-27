@@ -16,11 +16,13 @@ public class NoteSpawnerGroup : MonoBehaviour
     #endregion
 
     [SerializeField] private NoteSpawner[] spawners;
-    [SerializeField] private Note notePrefab;
 
-    [Header("Pools")]
-    [SerializeField] private ObjectPool<Note> note_pool;
+    [Header("Prefabs")]
+    [SerializeField] private SafeNote safeNote;
+
+    private ObjectPool<Note> note_pool;
     #region Subscribe to event
+
     private void OnEnable()
     {
         EventManager.GetInstance().onNoteSpawn += Spawn;
@@ -35,15 +37,15 @@ public class NoteSpawnerGroup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        IntializePool(note_pool, notePrefab.gameObject);
+        IntializePool(note_pool, safeNote);
     }
 
-    private void IntializePool(ObjectPool<Note> pool, GameObject prefab)
+    private void IntializePool(ObjectPool<Note> pool, Note prefab)
     {
         ObjectPool<Note> referencePool = pool;
         referencePool = new ObjectPool<Note>(() =>
         {
-            return Instantiate(notePrefab);
+            return Instantiate(prefab);
         }, note =>
         {
             note.gameObject.SetActive(true); //OnGet
