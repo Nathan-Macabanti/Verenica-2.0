@@ -7,8 +7,10 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Transform[] slidePoints;
     [SerializeField] private float airTime = 0.2f;
+    [SerializeField] private float coolDown = 0.1f;
 
     private int currentPosition;
+    private bool canMove;
     private bool isJumping;
 
     private Player player;
@@ -29,13 +31,19 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if(currentPosition < slidePoints.Length)
+        //If currentPosition is within bounds 
+        if (currentPosition < slidePoints.Length)
             this.transform.position = slidePoints[currentPosition].position;
+        else
+            CenterCharacter();
     }
 
-    public void Slide(int value)
+    public void Slide(int index)
     {
-        currentPosition += value;
+        if (!canMove) return;
+
+        //Zoom to this position
+        currentPosition = index;
     }
 
     public IEnumerator Jump()
@@ -43,6 +51,13 @@ public class PlayerMovement : MonoBehaviour
         isJumping = true;
         yield return new WaitForSeconds(airTime);
         isJumping = false;
+    }
+
+    public IEnumerator Cooldown()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(coolDown);
+        canMove = true;
     }
 
     public void CenterCharacter()

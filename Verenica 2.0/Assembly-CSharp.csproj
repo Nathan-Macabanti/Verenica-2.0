@@ -75,6 +75,16 @@
     <Compile Include="Assets\Scripts\RhythmGame\Notes\NoteTypes\SafeNote.cs" />
     <Compile Include="Assets\Scripts\RhythmGame\Notes\Note.cs" />
     <Compile Include="Assets\ScriptableObjects\SongInfo\SongInfo.cs" />
+    <Compile Include="Assets\Samples\Input System\1.4.2\Custom Binding Composite\CustomComposite.cs" />
+    <Compile Include="Assets\Samples\Input System\1.4.2\Custom Device\CustomDevice.cs" />
+    <Compile Include="Assets\Samples\Input System\1.4.2\Custom Device Usages\CustomDeviceUsages.cs" />
+    <Compile Include="Assets\Samples\Input System\1.4.2\Simple Demo\SimpleController_UsingPlayerInput.cs" />
+    <Compile Include="Assets\Samples\Input System\1.4.2\Simple Demo\SimpleController_UsingActions.cs" />
+    <Compile Include="Assets\Samples\Input System\1.4.2\Simple Demo\SimpleController_UsingState.cs" />
+    <Compile Include="Assets\Samples\Input System\1.4.2\Simple Demo\SimpleController_UsingActionAsset.cs" />
+    <Compile Include="Assets\Samples\Input System\1.4.2\Simple Demo\SimpleControls.cs" />
+    <Compile Include="Assets\Samples\Input System\1.4.2\Simple Multiplayer\SimpleMultiplayerPlayer.cs" />
+    <Compile Include="Assets\Samples\Input System\1.4.2\Unity Remote\UnityRemoteTestScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -328,6 +338,21 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Mdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Pdb">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Cecil.Rocks">
+      <HintPath>Library\PackageCache\com.unity.burst@1.6.6\Unity.Burst.CodeGen\Unity.Burst.Cecil.Rocks.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.9f1\Editor\Data\PlaybackEngines\iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -713,6 +738,12 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
@@ -814,6 +845,106 @@
     <ProjectReference Include="Unity.VisualScripting.State.csproj">
       <Project>{5410D5C0-9967-B3A9-FB61-CE4D9EE6BA5B}</Project>
       <Name>Unity.VisualScripting.State</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.IK.Editor.csproj">
+      <Project>{766F27B4-983F-68BA-6D47-74A27C902133}</Project>
+      <Name>Unity.2D.IK.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Common.Runtime.csproj">
+      <Project>{51F65955-C52B-A791-D290-5FAC9650ADBB}</Project>
+      <Name>Unity.2D.Common.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Psdimporter.Editor.csproj">
+      <Project>{0ADB0E19-6013-59F6-6648-CC284C613788}</Project>
+      <Name>Unity.2D.Psdimporter.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj">
+      <Project>{3BA99D37-EF7A-329F-E10F-4E54FC4B4B56}</Project>
+      <Name>Unity.2D.Tilemap.Extras.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.IK.Runtime.csproj">
+      <Project>{65495671-01D6-550F-A790-DFC37B456B2F}</Project>
+      <Name>Unity.2D.IK.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.Editor.csproj">
+      <Project>{15E95B13-C3D6-3773-C14B-4F7CE7E00048}</Project>
+      <Name>Unity.Mathematics.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.SpriteShape.Runtime.csproj">
+      <Project>{6290A185-2C9A-C1A1-9650-445C661630B7}</Project>
+      <Name>Unity.2D.SpriteShape.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.PixelPerfect.csproj">
+      <Project>{73D44F1F-E808-0236-D1EB-8E3D57A4493D}</Project>
+      <Name>Unity.2D.PixelPerfect</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.PixelPerfect.Editor.csproj">
+      <Project>{18FCD81D-ED4C-286E-3920-49268D2935EE}</Project>
+      <Name>Unity.2D.PixelPerfect.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Path.Editor.csproj">
+      <Project>{248A4030-AAA8-8FB9-A9E0-BDE08ECB1CED}</Project>
+      <Name>Unity.2D.Path.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Tilemap.Extras.csproj">
+      <Project>{E23B5D70-2C21-421B-EC6A-3310BC54D34E}</Project>
+      <Name>Unity.2D.Tilemap.Extras</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Animation.Editor.csproj">
+      <Project>{DF711775-F422-3A09-C922-EB3C3A76A3FF}</Project>
+      <Name>Unity.2D.Animation.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Mathematics.csproj">
+      <Project>{D3609B11-0778-AB22-CC12-4A6CD5AAA3E5}</Project>
+      <Name>Unity.Mathematics</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Animation.Runtime.csproj">
+      <Project>{95216650-DBF9-4489-67E5-E3340FF4A3D8}</Project>
+      <Name>Unity.2D.Animation.Runtime</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InternalAPIEngineBridge.001.csproj">
+      <Project>{7766ECE0-91CA-94A2-BC59-3CD11B65C0A8}</Project>
+      <Name>Unity.InternalAPIEngineBridge.001</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Burst.csproj">
+      <Project>{656AB417-EF99-C457-0E4C-6CEF1DA069ED}</Project>
+      <Name>Unity.Burst</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.Common.Editor.csproj">
+      <Project>{6534B6A9-D8C1-6190-EB61-CD0150A6F833}</Project>
+      <Name>Unity.2D.Common.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="PsdPlugin.csproj">
+      <Project>{B0514349-30AC-0093-141B-90834573B853}</Project>
+      <Name>PsdPlugin</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.Burst.Editor.csproj">
+      <Project>{4F6D873E-BB0D-079E-42AE-7A0596B4014E}</Project>
+      <Name>Unity.Burst.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InternalAPIEditorBridge.001.csproj">
+      <Project>{869F33FE-E031-D42F-1C02-3B03C52EF22C}</Project>
+      <Name>Unity.InternalAPIEditorBridge.001</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.2D.SpriteShape.Editor.csproj">
+      <Project>{232E9C06-0635-58FC-12CF-23B9A073A9D6}</Project>
+      <Name>Unity.2D.SpriteShape.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InputSystem.InGameHints.csproj">
+      <Project>{461613CF-D707-07F0-CA64-2C41818AAB10}</Project>
+      <Name>Unity.InputSystem.InGameHints</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.InputSystem.Recorder.csproj">
+      <Project>{0C04319B-6142-F3D4-8D9F-DE82A7AF7F73}</Project>
+      <Name>Unity.InputSystem.Recorder</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.InputSystem.Samples.UIvsGameInput.csproj">
+      <Project>{FAF93C3A-5D30-25A3-511F-62F194287D73}</Project>
+      <Name>UnityEngine.InputSystem.Samples.UIvsGameInput</Name>
+    </ProjectReference>
+    <ProjectReference Include="InputSystem.Samples.Visualizers.csproj">
+      <Project>{747DA63E-2079-7275-97C9-AE7E61938596}</Project>
+      <Name>InputSystem.Samples.Visualizers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
