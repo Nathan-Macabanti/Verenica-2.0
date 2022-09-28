@@ -79,8 +79,8 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\UI\Progress\ProgressControlsForMigration.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Gluon\IncomingChangesNotifier.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\CloudProjectDownloader\CloudProjectDownloader.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\IncomingChanges\Gluon\IncomingChangesTreeView.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\IncomingChanges\Developer\IncomingChangesViewMenu.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\IncomingChanges\Gluon\IncomingChangesTreeView.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\PendingChanges\PendingChangesTab_Operations.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\Changesets\ChangesetsListView.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\AssetMenu\AssetMenuOperations.cs" />
@@ -203,8 +203,8 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Tool\IsExeAvailable.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\IncomingChanges\Gluon\Errors\ErrorsListView.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\Diff\DiffTreeViewMenu.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\PlasticPlugin.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\Changesets\ChangesetsTab_Operations.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\PlasticPlugin.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\UI\EnumPopupSetting.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Configuration\CloudEdition\Welcome\CloudEditionWelcomeWindow.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\CreateWorkspace\Dialogs\RepositoryListViewItem.cs" />
@@ -276,9 +276,9 @@
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\IncomingChanges\Developer\ChangeCategoryTreeViewItem.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\ParentWindow.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\UI\EditorProgressBar.cs" />
-    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Configuration\MissingEncryptionPasswordPromptHandler.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Configuration\CloudEdition\Welcome\WaitingSignInPanel.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\Welcome\GetInstallerTmpFileName.cs" />
+    <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Configuration\MissingEncryptionPasswordPromptHandler.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\Changesets\ChangesetsViewMenu.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\History\SaveAction.cs" />
     <Compile Include="Library\PackageCache\com.unity.collab-proxy@1.17.2\Editor\PlasticSCM\Views\IncomingChanges\Developer\IsResolved.cs" />
@@ -1045,13 +1045,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="UnityEngine.TestRunner.csproj">
-      <Project>{DD3936EC-65EB-127E-F2D4-9EADB4D68B74}</Project>
-      <Name>UnityEngine.TestRunner</Name>
-    </ProjectReference>
     <ProjectReference Include="UnityEditor.TestRunner.csproj">
       <Project>{BB0C4832-782C-8BD6-300B-081902BFC84E}</Project>
       <Name>UnityEditor.TestRunner</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEngine.TestRunner.csproj">
+      <Project>{DD3936EC-65EB-127E-F2D4-9EADB4D68B74}</Project>
+      <Name>UnityEngine.TestRunner</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
