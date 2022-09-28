@@ -85,6 +85,9 @@
     <Compile Include="Assets\Samples\Input System\1.4.2\Simple Multiplayer\SimpleMultiplayerPlayer.cs" />
     <Compile Include="Assets\Samples\Input System\1.4.2\Simple Demo\SimpleController_UsingState.cs" />
     <Compile Include="Assets\ScriptableObjects\SongInfo\SongInfo.cs" />
+    <Compile Include="Assets\Scripts\Collision\CollisionPlayerToNote.cs" />
+    <Compile Include="Assets\Scripts\GameManagers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GameManagers\PlayerManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

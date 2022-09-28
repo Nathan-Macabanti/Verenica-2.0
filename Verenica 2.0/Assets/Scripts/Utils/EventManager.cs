@@ -14,7 +14,7 @@ public static class EventManager
     }
     #endregion
 
-    #region LOSE EVENT
+    #region WIN EVENT
     public delegate void Win();
     public static event Win OnWin;
     public static void InvokeWin()
@@ -22,6 +22,13 @@ public static class EventManager
         OnWin?.Invoke();
     }
     #endregion
+
+    public delegate void NoteHit(int playerPos, int notePos);
+    public static event NoteHit OnNoteHit;
+    public static void InvokeOnNoteHit(int playerPos, int notePos)
+    {
+        OnNoteHit?.Invoke(playerPos, notePos);
+    }
 
     #region NOTE SPAWN EVENT
     public delegate void NoteSpawn(float beat, int index, NoteType noteType);

@@ -6,12 +6,13 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Transform[] slidePoints;
+    [SerializeField] private float jumpHeight = 0.5f;
     [SerializeField] private float airTime = 0.2f;
     [SerializeField] private float coolDown = 0.1f;
 
-    private int currentPosition;
-    private bool canMove;
-    private bool isJumping;
+    private int currentPosition = 1;
+    private bool canMove = true;
+    private bool isJumping = false;
 
     private Player player;
     
@@ -29,28 +30,42 @@ public class PlayerMovement : MonoBehaviour
         {
             StopAllCoroutines(); //Will stop all courotines in this class
             return;
-        }
-
-        //If currentPosition is within bounds 
-        if (currentPosition < slidePoints.Length)
-            this.transform.position = slidePoints[currentPosition].position;
-        else
-            CenterCharacter();
+        }    
     }
 
-    public void Slide(int index)
+    public void Move(int index)
     {
-        if (!canMove) return;
+        if (!canMove || isJumping)//If you cannot move then don't move
+        {
+            Debug.Log("You Cannot Move");
+            return; 
+        }
 
         //Zoom to this position
         currentPosition = index;
+        this.transform.position = slidePoints[currentPosition].localPosition;
+        StartCoroutine(Cooldown());
     }
 
-    public IEnumerator Jump()
+    public void Jump()
     {
+        if (!canMove || isJumping) return;
+
+        StartCoroutine("JumpCoroutine");
+    }
+
+    IEnumerator JumpCoroutine()
+    {
+        float x = transform.position.x;
+        float y = jumpHeight;
+        float z = transform.position.z;
+        transform.position = new Vector3(x, y, z);
+
         isJumping = true;
         yield return new WaitForSeconds(airTime);
         isJumping = false;
+
+        transform.position = slidePoints[currentPosition].localPosition;
     }
 
     public IEnumerator Cooldown()
@@ -63,5 +78,13 @@ public class PlayerMovement : MonoBehaviour
     public void CenterCharacter()
     {
         currentPosition = 1;
+        transform.position = slidePoints[currentPosition].localPosition;
     }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+
+    public int GetPosIndex() { return currentPosition; }
 }

@@ -98,7 +98,7 @@ public class NoteSpawnerGroup : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(danger_Note_Pool.CountActive.ToString() + " " + danger_Note_Pool.CountInactive.ToString());
+        //Debug.Log(danger_Note_Pool.CountActive.ToString() + " " + danger_Note_Pool.CountInactive.ToString());
     }
 
     public void Spawn(float beat, int index, NoteType type)

@@ -7,17 +7,17 @@ public abstract class Note : MonoBehaviour
 {
     protected float beat;
     protected NotePath path;
-    protected int KeyToPress;
+    protected int notePos;
     protected IObjectPool<Note> _pool;
 
-    public void initialize(NotePath _path, float _beat, int _keyToPress)
+    public void initialize(NotePath _path, float _beat, int _notePos)
     {
         //Set the position to the start
         transform.position = _path.source.position;
 
         this.path = _path;
         this.beat = _beat;
-        this.KeyToPress = _keyToPress;
+        this.notePos = _notePos;
     }
 
     // Update is called once per frame
@@ -42,9 +42,14 @@ public abstract class Note : MonoBehaviour
         Vector3 source = this.path.source.position;
         Vector3 destination = this.path.destination.position;
         transform.position = Vector3.Lerp(source, destination, distance);
-        
+
         //Check if at destination
-        if (distance >= 1.0f) { ReturnToPool(); }
+        PlayerMovement playerMovement = PlayerManager.GetInstance().playerMovement;
+        if (distance >= 1.0f) 
+        {
+            EventManager.InvokeOnNoteHit(playerMovement.GetPosIndex(), notePos);
+            ReturnToPool();
+        }
     }
 
     public void ReturnToPool()

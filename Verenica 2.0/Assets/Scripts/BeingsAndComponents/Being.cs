@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Being : MonoBehaviour
 {
-    [SerializeField] protected int startingHP;
+    [SerializeField] protected int startingHP = 3;
+    [SerializeField] protected int maxHP = 3;
     protected int currentHP;
-    protected int maxHP;
     protected bool isDead;
     // Start is called before the first frame update
     void Start()

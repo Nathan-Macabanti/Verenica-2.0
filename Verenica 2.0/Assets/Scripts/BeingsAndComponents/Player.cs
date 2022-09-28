@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Being
 {
-#if false
+#if true
 #region Singleton
     private static Player instance;
     private void IntializeSingleton()
