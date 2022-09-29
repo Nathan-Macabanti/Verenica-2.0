@@ -11,9 +11,17 @@ public class Being : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHP = startingHP;
-        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        InitializeHP();
         isDead = false;
+    }
+
+    public void InitializeHP()
+    {
+        if (startingHP <= currentHP)
+        {
+            currentHP = startingHP;
+            currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        }
     }
 
     public virtual void Damage(int damage)
@@ -31,5 +39,17 @@ public class Being : MonoBehaviour
         isDead = true;
     }
 
+    //Adds HP
+    public void Heal(int heal)
+    {
+        currentHP += heal;
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+    }
+
+    public void SetHealth(int currHealth, int maxHealth)
+    {
+        currentHP = currHealth;
+        maxHP = maxHealth;
+    }
     public bool IsDead() { return isDead; }
 }

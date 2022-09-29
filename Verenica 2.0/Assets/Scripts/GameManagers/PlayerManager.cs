@@ -20,12 +20,10 @@ public class PlayerManager : MonoBehaviour
     }
 
     public Player player;
-    public PlayerMovement playerMovement;
+
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<Player>();
-        GameObject playerObj = player.gameObject;
-        playerMovement = playerObj.GetComponent<PlayerMovement>();
     }
 }

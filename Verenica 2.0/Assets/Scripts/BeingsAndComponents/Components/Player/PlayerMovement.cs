@@ -5,6 +5,14 @@ using UnityEngine;
 [RequireComponent(typeof(Player))]
 public class PlayerMovement : MonoBehaviour
 {
+    #region
+    public delegate void PlayerMove();
+    public event PlayerMove OnPlayerMove;
+    public void InvokeMove()
+    {
+        OnPlayerMove?.Invoke();
+    }
+    #endregion
     [SerializeField] private Transform[] slidePoints;
     [SerializeField] private float jumpHeight = 0.5f;
     [SerializeField] private float airTime = 0.2f;
@@ -45,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         currentPosition = index;
         this.transform.position = slidePoints[currentPosition].localPosition;
         StartCoroutine(Cooldown());
+        InvokeMove();
     }
 
     public void Jump()
@@ -52,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         if (!canMove || isJumping) return;
 
         StartCoroutine("JumpCoroutine");
+        InvokeMove();
     }
 
     IEnumerator JumpCoroutine()

@@ -23,19 +23,21 @@ public static class EventManager
     }
     #endregion
 
-    public delegate void NoteHit(int playerPos, int notePos);
-    public static event NoteHit OnNoteHit;
-    public static void InvokeOnNoteHit(int playerPos, int notePos)
-    {
-        OnNoteHit?.Invoke(playerPos, notePos);
-    }
-
     #region NOTE SPAWN EVENT
     public delegate void NoteSpawn(float beat, int index, NoteType noteType);
     public static event NoteSpawn OnNoteSpawn;
     public static void InvokeNoteSpawn(float beat, int index, NoteType noteType) 
     {
         OnNoteSpawn?.Invoke(beat, index, noteType);
+    }
+    #endregion
+
+    #region ENEMY DEATH EVENT
+    public delegate void EnemyDied();
+    public static event EnemyDied OnEnemyDied;
+    public static void InvokeEnemyDied()
+    {
+        OnEnemyDied?.Invoke();
     }
     #endregion
 

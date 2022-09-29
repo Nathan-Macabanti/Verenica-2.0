@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
+[RequireComponent(typeof(Collider))]
 public abstract class Note : MonoBehaviour
 {
     protected float beat;
@@ -12,9 +13,6 @@ public abstract class Note : MonoBehaviour
 
     public void initialize(NotePath _path, float _beat, int _notePos)
     {
-        //Set the position to the start
-        transform.position = _path.source.position;
-
         this.path = _path;
         this.beat = _beat;
         this.notePos = _notePos;
@@ -43,11 +41,8 @@ public abstract class Note : MonoBehaviour
         Vector3 destination = this.path.destination.position;
         transform.position = Vector3.Lerp(source, destination, distance);
 
-        //Check if at destination
-        PlayerMovement playerMovement = PlayerManager.GetInstance().playerMovement;
-        if (distance >= 1.0f) 
+        if(distance >= 1.0f)
         {
-            EventManager.InvokeOnNoteHit(playerMovement.GetPosIndex(), notePos);
             ReturnToPool();
         }
     }
@@ -57,7 +52,7 @@ public abstract class Note : MonoBehaviour
         _pool.Release(this);
     }
 
-    public abstract void Action();
+    public abstract void OnPlayerCollided();
 
     public void SetPool(IObjectPool<Note> pool) => _pool = pool; 
 }

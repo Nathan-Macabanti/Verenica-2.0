@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class DangerNote : Note
 {
-    public override void Action()
+    private void OnEnable()
     {
+        CollisionPlayerToNote.OnDangerNoteHit += OnPlayerCollided;
+    }
 
+    private void OnDisable()
+    {
+        CollisionPlayerToNote.OnDangerNoteHit -= OnPlayerCollided;
+    }
+
+    public override void OnPlayerCollided()
+    {
     }
 }
