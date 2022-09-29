@@ -28,7 +28,7 @@ public class SongManager : MonoBehaviour
     private float dspTime;
     private Radio radio;
 
-    private int index;
+    private int nextIndex;
     private Chart chartCopy;
     
     public float beatOffset;
@@ -49,7 +49,7 @@ public class SongManager : MonoBehaviour
         this.chartCopy = songInfo.chart; //erase if PhaseManager exists
         secondsPerBeat = 60.0f / BPM;
         this.dspTime = (float)AudioSettings.dspTime; //Must be called when the song starts
-        index = 0;
+        nextIndex = 0;
     }
 
     private void InitializeAudio()
@@ -74,7 +74,7 @@ public class SongManager : MonoBehaviour
 
     private void CheckIfCanSpawn()
     {
-        if (index >= chartCopy.beats.Length) return; //IF THE INDEX IS LESS THAN THE AMOUNT IN THE CHART
+        if (nextIndex >= chartCopy.beats.Length) return; //IF THE INDEX IS GREATER THAN THE AMOUNT IN THE CHART or LESS THAN 0
         
         //SPAWN 
         float spawnTime = songPositionInBeats + beatOffset;
@@ -82,7 +82,7 @@ public class SongManager : MonoBehaviour
         if (currentBeat < spawnTime)
         {
             CallSpawnEvent(currentBeat);
-            index++;
+            nextIndex++;
         }
     }
 
@@ -103,5 +103,5 @@ public class SongManager : MonoBehaviour
     }
 
     public float GetSongPositionInBeats() { return songPositionInBeats; }
-    public BeatInfo CurrentBeatInfo() { return chartCopy.beats[index]; }
+    public BeatInfo CurrentBeatInfo() { return chartCopy.beats[nextIndex]; }
 }

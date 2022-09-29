@@ -6,48 +6,50 @@ using UnityEngine;
 public class PlayerCollider : MonoBehaviour
 {
     [Header("Overlap Capsule Values")]
-    [SerializeField] private Vector3 point0Offset;
-    [SerializeField] private Vector3 point1Offset;
-    [SerializeField] private float radius;
+    [SerializeField] private Vector3 centerOffset;
+    [SerializeField] private float radius = 0.01f;
 
     private Player player;
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GetComponent<Player>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        OnPlayerCollision();
+    }
+
+    private void OnPlayerCollision()
+    {
+        //Checks if a collider is intersect a certain poisition
+        var center = transform.position + centerOffset;
+        Collider[] collider = Physics.OverlapSphere(center, radius);
+        foreach (Collider col in collider)
+        {
+            Debug.Log(col.name);
+            if(col.TryGetComponent<Note>(out Note note))
+            {
+                note.OnPlayerCollided();
+            }
+        }
     }
 
     private void OnEnable()
     {
-        player.GetPlayerMovement().OnPlayerMove += OnMove;
     }
 
     private void OnDisable()
     {
-        player.GetPlayerMovement().OnPlayerMove -= OnMove;
-    }
-
-    public void OnMove()
-    {
-        //Checks if a collider is intersect a certain poisition
-        var point0 = transform.position + point0Offset;
-        var point1 = transform.position + point1Offset;
-        Collider[] collider = Physics.OverlapCapsule(point0, point1, radius);
     }
 
     //Draws area of trigger
     private void OnDrawGizmos()
     {
-        var point0 = transform.position + point0Offset;
-        var point1 = transform.position + point1Offset;
+        var center = transform.position + centerOffset;
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(point0, radius);
-        Gizmos.DrawWireSphere(point1, radius);
+        Gizmos.DrawWireSphere(center, radius);
     }
 }

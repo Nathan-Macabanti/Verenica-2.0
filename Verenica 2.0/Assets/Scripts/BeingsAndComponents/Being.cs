@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Being : MonoBehaviour
 {
+    [Header("Health Values")]
     [SerializeField] protected int startingHP = 3;
     [SerializeField] protected int maxHP = 3;
     protected int currentHP;
+    public int GetCurrentHP() { return currentHP; }
+
     protected bool isDead;
     // Start is called before the first frame update
     void Start()
@@ -15,20 +18,19 @@ public class Being : MonoBehaviour
         isDead = false;
     }
 
-    public void InitializeHP()
+    protected void InitializeHP()
     {
-        if (startingHP <= currentHP)
-        {
-            currentHP = startingHP;
-            currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-        }
+        startingHP = Mathf.Clamp(startingHP, 0, maxHP);
+        currentHP = startingHP;
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        //Debug.Log(gameObject.name + " " + startingHP.ToString());
     }
 
-    public virtual void Damage(int damage)
+    public void Damage(int damage)
     {
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-
+        //Debug.Log(gameObject.name + ": " + currentHP);
         //If your HP is 0 die
         if (currentHP <= 0)
             Die();

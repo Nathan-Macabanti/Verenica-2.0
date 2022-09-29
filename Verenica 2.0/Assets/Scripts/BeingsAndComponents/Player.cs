@@ -27,6 +27,7 @@ public class Player : Being
     //private float 
     private void Start()
     {
+        InitializeHP();
         TryToSetPlayerComponents();
     }
 

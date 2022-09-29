@@ -30,7 +30,6 @@ public class NoteSpawnerGroup : MonoBehaviour
 
     [Header("Note Prefab")]
     public Note DangerNote;
-    public Note DangerNote2;
     public Note SafeNote;
 
     public ObjectPool<Note> danger_Note_Pool;
@@ -86,13 +85,6 @@ public class NoteSpawnerGroup : MonoBehaviour
         {
             Destroy(note.gameObject); //OnDestroy
         }, false, 10, 30);
-    }
-
-    public void ChangeNote()
-    {
-        var temp = DangerNote;
-        DangerNote = DangerNote2;
-        DangerNote2 = temp;
     }
     #endregion
 

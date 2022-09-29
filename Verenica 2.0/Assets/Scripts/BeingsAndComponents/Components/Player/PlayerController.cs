@@ -38,7 +38,6 @@ public class PlayerController : MonoBehaviour
             throw new System.Exception("No Keyboard");
         }
 
-        Debug.Log("There is Keyboard");
         if (keyboard.leftArrowKey.wasPressedThisFrame || keyboard.aKey.wasPressedThisFrame)
         {
             playerMovement.Move(0);

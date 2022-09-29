@@ -10,9 +10,11 @@ public abstract class Note : MonoBehaviour
     protected NotePath path;
     protected int notePos;
     protected IObjectPool<Note> _pool;
+    protected bool isDead;
 
     public void initialize(NotePath _path, float _beat, int _notePos)
     {
+        isDead = false;
         this.path = _path;
         this.beat = _beat;
         this.notePos = _notePos;
@@ -47,12 +49,14 @@ public abstract class Note : MonoBehaviour
         }
     }
 
+    public abstract void OnPlayerCollided();
+
     public void ReturnToPool()
     {
+        isDead = true;
         _pool.Release(this);
     }
 
-    public abstract void OnPlayerCollided();
-
     public void SetPool(IObjectPool<Note> pool) => _pool = pool; 
+    public bool GetIsDead() { return isDead; }
 }
