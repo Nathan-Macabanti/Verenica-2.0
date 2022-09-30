@@ -48,7 +48,7 @@ public abstract class Note : MonoBehaviour
             ReturnToPool();
         }
     }
-
+    
     public abstract void OnPlayerCollided();
 
     public void ReturnToPool()

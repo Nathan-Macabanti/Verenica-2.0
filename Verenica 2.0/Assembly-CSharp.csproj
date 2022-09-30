@@ -77,8 +77,10 @@
     <Compile Include="Assets\Scripts\RhythmGame\Notes\Note.cs" />
     <Compile Include="Assets\Scripts\GameManagers\GameManager.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Enemies\Shosple.cs" />
-    <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Player\PlayerCollider.cs" />
+    <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\PlayerCollider.cs" />
     <Compile Include="Assets\ScriptableObjects\SongInfo\SongInfo.cs" />
+    <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\EnemyCollider.cs" />
+    <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\MyCollider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -776,13 +778,17 @@
       <Project>{766F27B4-983F-68BA-6D47-74A27C902133}</Project>
       <Name>Unity.2D.IK.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.csproj">
-      <Project>{573BC0F6-3160-40BB-E3EA-B0E3622BF8C5}</Project>
-      <Name>Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.2D.Path.Editor.csproj">
       <Project>{248A4030-AAA8-8FB9-A9E0-BDE08ECB1CED}</Project>
       <Name>Unity.2D.Path.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
+      <Project>{042BAAEE-CF4A-66E3-E060-50643578CE9F}</Project>
+      <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.csproj">
+      <Project>{573BC0F6-3160-40BB-E3EA-B0E3622BF8C5}</Project>
+      <Name>Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.InputSystem.csproj">
       <Project>{515D6978-2D0E-038E-D622-183990617CB8}</Project>
@@ -799,10 +805,6 @@
     <ProjectReference Include="Unity.2D.IK.Runtime.csproj">
       <Project>{65495671-01D6-550F-A790-DFC37B456B2F}</Project>
       <Name>Unity.2D.IK.Runtime</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.VisualScripting.SettingsProvider.Editor.csproj">
-      <Project>{042BAAEE-CF4A-66E3-E060-50643578CE9F}</Project>
-      <Name>Unity.VisualScripting.SettingsProvider.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Mathematics.Editor.csproj">
       <Project>{15E95B13-C3D6-3773-C14B-4F7CE7E00048}</Project>
