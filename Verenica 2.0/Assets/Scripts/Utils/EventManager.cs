@@ -41,17 +41,22 @@ public static class EventManager
     }
     #endregion
 
-    #region UNITY EVENTS
-#if false
-    #region EVENT UNITY ACTION
-    public static event UnityAction<float, int, NoteType> onNoteSpawn;
-    public static event UnityAction onLose;
-    #endregion
-
-    #region INVOKE FUNCTIONS
-    public static void NoteSpawn(float beat, int spawner, NoteType note) { onNoteSpawn?.Invoke(beat, spawner, note); }
-    public static void Lose() { onLose?.Invoke(); }
-    #endregion
-#endif
+    #region PLAYER EVENTS
+        #region PLAYER DAMAGED EVENT
+        public delegate void PlayerDamaged();
+        public static event PlayerDamaged OnPlayerDamaged;
+        public static void InvokePlayerDamaged()
+        {
+            OnPlayerDamaged?.Invoke();
+        }
+        #endregion
+        #region PLAYER ATTACK EVENT
+        public delegate void PlayerAttack();
+        public static event PlayerAttack OnPlayerAttack;
+        public static void InvokePlayerAttack()
+        {
+        OnPlayerAttack?.Invoke();
+        }
+        #endregion
     #endregion
 }

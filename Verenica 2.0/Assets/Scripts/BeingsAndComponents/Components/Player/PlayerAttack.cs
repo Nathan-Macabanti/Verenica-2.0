@@ -6,10 +6,12 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Attack Values")]
-    [SerializeField] private int startingAttackValue;
-    [SerializeField] private int maxAttackValue;
-    private int currentAttackValue;
-
+    [SerializeField] private uint startingAttackValue;
+    [SerializeField] private uint maxAttackValue;
+    #region Current Attack Value
+    private uint currentAttackValue;
+    public uint CurrentAttackValue { get { return currentAttackValue; } }
+    #endregion
     private Player player;
 
     // Start is called before the first frame update
@@ -21,19 +23,19 @@ public class PlayerAttack : MonoBehaviour
 
     public void InitializeAttack()
     {
-        startingAttackValue = Mathf.Clamp(startingAttackValue, 0, maxAttackValue);
         currentAttackValue = startingAttackValue;
-        currentAttackValue = Mathf.Clamp(currentAttackValue, 0, maxAttackValue);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        currentAttackValue = (uint)Mathf.Clamp(currentAttackValue, 0, maxAttackValue);
     }
 
+    //Attack the target directly
     public void Attack(Being target)
     {
-        Debug.Log($"Attacking {target.name}");
+        //Debug.Log($"Attacking {target.name}");
         target.Damage(currentAttackValue);
+    }
+
+    //Hit something
+    public void Hit()
+    {
     }
 }

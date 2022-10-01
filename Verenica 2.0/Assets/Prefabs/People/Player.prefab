@@ -210,5 +210,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   point0Offset: {x: 0, y: -0.5, z: 0}
   point1Offset: {x: 0, y: 1, z: 0}
-  radius: 0.5
+  radius: 0.25
   colliderColor: {r: 0, g: 0.83626723, b: 1, a: 1}

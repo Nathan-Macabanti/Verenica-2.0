@@ -20,7 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float airTime = 0.2f;
     [SerializeField] private float coolDown = 0.1f;
 
-    private int currentPosition = 1;
+    private uint currentPosition = 1;
     private bool canMove = true;
     private bool isJumping = false;
 
@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour
         }    
     }
 
-    public void Move(int index)
+    public void Move(uint index)
     {
         if (!canMove || isJumping)//If you cannot move then don't move
         {
@@ -98,5 +98,5 @@ public class PlayerMovement : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public int GetPosIndex() { return currentPosition; }
+    public uint GetPosIndex() { return currentPosition; }
 }

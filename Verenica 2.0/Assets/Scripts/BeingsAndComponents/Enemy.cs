@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class Enemy : Being
 {
-    private int _currentPhase;
-
     protected override void Die()
     {
         EventManager.InvokeEnemyDied();

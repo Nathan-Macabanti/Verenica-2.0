@@ -5,10 +5,10 @@ using UnityEngine;
 public class Being : MonoBehaviour
 {
     [Header("Health Values")]
-    [SerializeField] protected int startingHP = 3;
-    [SerializeField] protected int maxHP = 3;
-    protected int currentHP;
-    public int GetCurrentHP() { return currentHP; }
+    [SerializeField] private uint startingHP = 3;
+    [SerializeField] protected uint maxHP = 3;
+    protected uint currentHP;
+    public uint GetCurrentHP() { return currentHP; }
 
     protected bool isDead;
     // Start is called before the first frame update
@@ -18,18 +18,17 @@ public class Being : MonoBehaviour
         isDead = false;
     }
 
-    protected void InitializeHP()
+    protected virtual void InitializeHP()
     {
-        startingHP = Mathf.Clamp(startingHP, 0, maxHP);
         currentHP = startingHP;
-        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        currentHP = (uint)Mathf.Clamp(currentHP, 0, maxHP);
         //Debug.Log(gameObject.name + " " + startingHP.ToString());
     }
 
-    public void Damage(int damage)
+    public virtual void Damage(uint damage)
     {
         currentHP -= damage;
-        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        currentHP = (uint)Mathf.Clamp(currentHP, 0, maxHP);
         //Debug.Log(gameObject.name + ": " + currentHP);
         //If your HP is 0 die
         if (currentHP <= 0)
@@ -42,13 +41,13 @@ public class Being : MonoBehaviour
     }
 
     //Adds HP
-    public void Heal(int heal)
+    public void Heal(uint heal)
     {
         currentHP += heal;
-        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        currentHP = (uint)Mathf.Clamp(currentHP, 0, maxHP);
     }
 
-    public void SetHealth(int currHealth, int maxHealth)
+    public void SetHealth(uint currHealth, uint maxHealth)
     {
         currentHP = currHealth;
         maxHP = maxHealth;
