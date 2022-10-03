@@ -16,12 +16,14 @@ public class SafeNote : Note
     {
         movementState = MovementState.move;
         target = GameManager.GetInstance().GetEnemy();
+        EventManager.OnGameIsOver += OnGameOver;
         //CollisionPlayerToNote.OnSafeNoteHit += OnPlayerCollided;
     }
 
     private void OnDisable()
     {
         target = null;
+        EventManager.OnGameIsOver -= OnGameOver;
         //CollisionPlayerToNote.OnSafeNoteHit -= OnPlayerCollided;
     }
 
@@ -39,7 +41,7 @@ public class SafeNote : Note
         if (target == null) return;
 
         var step = speed * Time.fixedDeltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+        _transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
     }
 
     public override void OnPlayerCollided()
@@ -53,7 +55,7 @@ public class SafeNote : Note
     public void OnEnemyCollided()
     {
         PlayerAttack pAttack = GameManager.GetInstance().GetPlayer().GetPlayerAttack();
-        target.Damage(pAttack.CurrentAttackValue * ComboSystem.GetInstance().Multiplier);
+        target.Damage(pAttack.CurrentAttackValue * (int)ComboSystem.GetInstance().Multiplier);
         ReturnToPool();
     }
 }

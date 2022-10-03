@@ -197,7 +197,7 @@ Transform:
   m_GameObject: {fileID: 361318456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.4, z: -5}
-  m_LocalScale: {x: 1, y: 1, z: -0.01}
+  m_LocalScale: {x: 1, y: 1, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1011237320}
@@ -277,7 +277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 361983429}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.9, y: 0, z: -5}
+  m_LocalPosition: {x: 1.5, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -736,7 +736,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072519564}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: 5}
+  m_LocalPosition: {x: -1.5, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -820,7 +820,7 @@ Transform:
   m_GameObject: {fileID: 1090322500}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
-  m_LocalScale: {x: 0.3, y: 1, z: 10}
+  m_LocalScale: {x: 0.4, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1939359185}
@@ -873,6 +873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ecd700c000ff7409c417a7806d4fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerName: Player
+  EnemyName: Shosple
   _player: {fileID: 2100385183}
   _enemy: {fileID: 331042047}
 --- !u!114 &1135489550
@@ -1106,7 +1108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1545286259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 5}
+  m_LocalPosition: {x: 1.5, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1237,7 +1239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2056639599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 0, z: -5}
+  m_LocalPosition: {x: -1.5, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1469,6 +1471,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1939359185}
     m_Modifications:
+    - target: {fileID: 1382953624479086432, guid: 93af4aed3180b134e9137f6a672df429, type: 3}
+      propertyPath: m_Size.z
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 5394452147918246723, guid: 93af4aed3180b134e9137f6a672df429, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1529,6 +1535,18 @@ PrefabInstance:
       propertyPath: slidePoints.Array.data[2]
       value: 
       objectReference: {fileID: 361983430}
+    - target: {fileID: 5394452147918246727, guid: 93af4aed3180b134e9137f6a672df429, type: 3}
+      propertyPath: maxHP
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394452147918246727, guid: 93af4aed3180b134e9137f6a672df429, type: 3}
+      propertyPath: startingHP
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394452147918246777, guid: 93af4aed3180b134e9137f6a672df429, type: 3}
+      propertyPath: point0Offset.y
+      value: -0.125
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93af4aed3180b134e9137f6a672df429, type: 3}
 --- !u!1001 &7116483830206105767

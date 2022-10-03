@@ -25,11 +25,13 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping = false;
 
     private Player player;
+    private Transform _playerTransform;
     
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Player>();
+        _playerTransform = transform;
         CenterCharacter();
     }
 
@@ -53,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Zoom to this position
         currentPosition = index;
-        this.transform.position = slidePoints[currentPosition].localPosition;
+        _playerTransform.position = slidePoints[currentPosition].localPosition;
         StartCoroutine(Cooldown());
         //InvokeMove();
     }
@@ -68,16 +70,16 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator JumpCoroutine()
     {
-        float x = transform.position.x;
+        float x = _playerTransform.position.x;
         float y = jumpHeight;
-        float z = transform.position.z;
-        transform.position = new Vector3(x, y, z);
+        float z = _playerTransform.position.z;
+        _playerTransform.position = new Vector3(x, y, z);
 
         isJumping = true;
         yield return new WaitForSeconds(airTime);
         isJumping = false;
 
-        transform.position = slidePoints[currentPosition].localPosition;
+        _playerTransform.position = slidePoints[currentPosition].localPosition;
     }
 
     public IEnumerator Cooldown()
@@ -90,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
     public void CenterCharacter()
     {
         currentPosition = 1;
-        transform.position = slidePoints[currentPosition].localPosition;
+        _playerTransform.position = slidePoints[currentPosition].localPosition;
     }
 
     private void OnDisable()

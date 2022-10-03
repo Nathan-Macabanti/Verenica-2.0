@@ -12,19 +12,24 @@ public abstract class MyCollider : MonoBehaviour
     [Header("Gizmos")]
     [SerializeField] Color colliderColor;
 
+    //Cache for optimization
+    protected Transform _transform;
+
+    
+
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        OnCollision();
+        OnOverlap();
     }
 
-    protected abstract void OnCollision();
+    protected abstract void OnOverlap();
 
     //Draws area of trigger
     private void OnDrawGizmos()
     {
-        var point0 = transform.position + point0Offset;
-        var point1 = transform.position + point1Offset;
+        var point0 = transform.TransformPoint(point0Offset); //positionVector + pointOffsetVector
+        var point1 = transform.TransformPoint(point1Offset);
 
         Gizmos.color = colliderColor;
         Gizmos.DrawWireSphere(point0, radius);

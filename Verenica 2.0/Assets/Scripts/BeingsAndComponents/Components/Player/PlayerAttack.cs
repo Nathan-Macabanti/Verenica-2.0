@@ -6,11 +6,11 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Attack Values")]
-    [SerializeField] private uint startingAttackValue;
-    [SerializeField] private uint maxAttackValue;
+    [SerializeField] private int startingAttackValue;
+    [SerializeField] private int maxAttackValue;
     #region Current Attack Value
-    private uint currentAttackValue;
-    public uint CurrentAttackValue { get { return currentAttackValue; } }
+    private int currentAttackValue;
+    public int CurrentAttackValue { get { return currentAttackValue; } }
     #endregion
     private Player player;
 
@@ -24,7 +24,7 @@ public class PlayerAttack : MonoBehaviour
     public void InitializeAttack()
     {
         currentAttackValue = startingAttackValue;
-        currentAttackValue = (uint)Mathf.Clamp(currentAttackValue, 0, maxAttackValue);
+        currentAttackValue = Mathf.Clamp(currentAttackValue, 0, maxAttackValue);
     }
 
     //Attack the target directly

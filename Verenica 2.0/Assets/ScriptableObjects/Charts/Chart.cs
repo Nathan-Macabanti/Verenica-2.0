@@ -13,6 +13,7 @@ public class Chart : ScriptableObject
 public struct BeatInfo
 {
     public float beat;
+    [Space(10)]
     public NoteType lane_1;
     public NoteType lane_2;
     public NoteType lane_3;

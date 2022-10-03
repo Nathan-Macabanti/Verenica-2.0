@@ -13,19 +13,55 @@ MonoBehaviour:
   m_Name: SampleChart
   m_EditorClassIdentifier: 
   beats:
-  - beat: 4
-    lane_1: 2
+  - beat: 4.25
+    lane_1: 0
     lane_2: 1
     lane_3: 0
-  - beat: 5
-    lane_1: 2
-    lane_2: 2
+  - beat: 4.75
+    lane_1: 1
+    lane_2: 0
+    lane_3: 0
+  - beat: 5.25
+    lane_1: 0
+    lane_2: 1
+    lane_3: 0
+  - beat: 5.75
+    lane_1: 1
+    lane_2: 1
     lane_3: 2
-  - beat: 6
+  - beat: 6.25
     lane_1: 1
     lane_2: 2
     lane_3: 1
-  - beat: 7
+  - beat: 6.75
+    lane_1: 2
+    lane_2: 1
+    lane_3: 1
+  - beat: 7.25
+    lane_1: 1
+    lane_2: 2
+    lane_3: 1
+  - beat: 7.75
+    lane_1: 1
+    lane_2: 1
+    lane_3: 2
+  - beat: 8.25
+    lane_1: 1
+    lane_2: 2
+    lane_3: 1
+  - beat: 8.75
+    lane_1: 2
+    lane_2: 1
+    lane_3: 2
+  - beat: 9
+    lane_1: 2
+    lane_2: 0
+    lane_3: 0
+  - beat: 9.125
     lane_1: 0
     lane_2: 2
     lane_3: 0
+  - beat: 9.25
+    lane_1: 0
+    lane_2: 0
+    lane_3: 1

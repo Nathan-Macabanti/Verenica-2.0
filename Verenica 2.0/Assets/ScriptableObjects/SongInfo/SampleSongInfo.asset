@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53d054de3f37b5747ab2153cbbd94dff, type: 3}
   m_Name: SampleSongInfo
   m_EditorClassIdentifier: 
-  BPM: 80
+  BPM: 40
   clip: {fileID: 8300000, guid: 2867d021cb95b9b428e09d30ede28cf8, type: 3}
   chart: {fileID: 11400000, guid: ef8cb6ae98404d04ba357d33808e8132, type: 2}

@@ -17,4 +17,9 @@ public static class MyMath
         if (x % 2 == 0) { return false; }
         return true;
     }
+
+    public static float Velocity1D(float displacement, float time)
+    {
+        return displacement / time;
+    }
 }

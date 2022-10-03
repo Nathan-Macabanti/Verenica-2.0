@@ -18,16 +18,23 @@ public class GameManager : MonoBehaviour
 
 
     #region Variables
-    private WinState _winState = WinState.none;
-    private bool gameIsOver = false;
+    [Tooltip("Slow")]
+    [Header("Find Player and Enemy by name")]
+    [SerializeField] private string PlayerName;
+    [SerializeField] private string EnemyName;
+
+    [Header("Manually set Player and Enemy")]
     #region Player
     [SerializeField] private Player _player;
-    public Player GetPlayer() { return _player; }
     #endregion
     #region Enemy
     [SerializeField] private Enemy _enemy;
-    public Enemy GetEnemy() { return _enemy; }
     #endregion
+    public Player GetPlayer() { return _player; }
+    public Enemy GetEnemy() { return _enemy; }
+
+    private WinState _winState = WinState.none;
+    private bool gameIsOver = false;
     #endregion
 
     private void Awake()
@@ -38,9 +45,9 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         if(_player == null)
-            _player = FindObjectOfType<Player>();
+            _player = GameObject.FindGameObjectWithTag(PlayerName).GetComponent<Player>();
         if (_enemy == null) //Remove once PhaseManager exists
-            _enemy = FindObjectOfType<Enemy>();
+            _enemy = GameObject.FindGameObjectWithTag(EnemyName).GetComponent<Enemy>();
 
         //_enemy = will be called in the PhaseManager
     }
@@ -61,7 +68,9 @@ public class GameManager : MonoBehaviour
         {
             _winState = WinState.win;
             gameIsOver = true;
-            EventManager.InvokeWin();
+            EventManager.InvokeGameOver(_winState);
+            Debug.Log("You Win");
+            //EventManager.InvokeWin();
         }
     }
 
@@ -71,7 +80,9 @@ public class GameManager : MonoBehaviour
         {
             _winState = WinState.lose;
             gameIsOver = true;
-            EventManager.InvokeLose();
+            EventManager.InvokeGameOver(_winState);
+            Debug.Log("You Lose");
+            //EventManager.InvokeLose();
         }
     }
 

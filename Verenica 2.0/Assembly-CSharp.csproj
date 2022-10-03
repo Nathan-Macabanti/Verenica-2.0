@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Pathfinding\Path.cs" />
     <Compile Include="Assets\Scripts\MusicManagement\Radio.cs" />
+    <Compile Include="Assets\Scripts\ComboSystem.cs" />
     <Compile Include="Assets\ScriptableObjects\Charts\Chart.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\EnemyCollider.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Enemy.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Assets\Scripts\RhythmManagement\Notes\NoteTypes\DangerNote.cs" />
     <Compile Include="Assets\Scripts\Utils\MyMath.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Player\PlayerAttack.cs" />
+    <Compile Include="Assets\Scripts\Data\Stats.cs" />
     <Compile Include="Assets\Scripts\RhythmManagement\Notes\NoteTypes\SafeNote.cs" />
     <Compile Include="Assets\Scripts\RhythmManagement\Metronome.cs" />
     <Compile Include="Assets\Scripts\RhythmManagement\Notes\Note.cs" />
@@ -82,8 +84,6 @@
     <Compile Include="Assets\Scripts\BeingsAndComponents\Enemies\Shosple.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\PlayerCollider.cs" />
     <Compile Include="Assets\ScriptableObjects\SongInfo\SongInfo.cs" />
-    <Compile Include="Assets\Scripts\ComboSystem.cs" />
-    <Compile Include="Assets\Scripts\Data\Stats.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

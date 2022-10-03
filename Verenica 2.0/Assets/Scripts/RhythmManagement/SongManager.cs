@@ -36,6 +36,8 @@ public class SongManager : MonoBehaviour
     private bool _beatFull;
     private float _beatTimer;
     private int _beatCountFull;
+
+    private bool isOn = true;
     #endregion
 
     // Start is called before the first frame update
@@ -59,12 +61,14 @@ public class SongManager : MonoBehaviour
     {
         if(radio == null) { radio = this.GetComponent<Radio>(); }
         radio.SetClip(songInfo.clip);
+        radio.Play();
     }
     
     // Update is called once per frame
     void Update()
     {
-        radio.Play();
+        if (!isOn) return;
+
         CalculateBeat();
         CheckIfCanSpawn();
         //BeatDetection();
@@ -118,6 +122,21 @@ public class SongManager : MonoBehaviour
             _beatCountFull++;
             Debug.Log("doogs");
         }
+    }
+
+    private void OnEnable()
+    {
+        EventManager.OnGameIsOver += OnGameOver;
+    }
+    private void OnDisable()
+    {
+        EventManager.OnGameIsOver -= OnGameOver;
+    }
+
+    public void OnGameOver(WinState winState)
+    {
+        radio.Stop();
+        isOn = false;
     }
 
     public float GetSongPositionInBeats() { return songPositionInBeats; }

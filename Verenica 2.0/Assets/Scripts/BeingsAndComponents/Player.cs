@@ -43,7 +43,7 @@ public class Player : Being
         }
     }
 
-    public override void Damage(uint damage)
+    public override void Damage(int damage)
     {
         base.Damage(damage);
         EventManager.InvokePlayerDamaged();
@@ -52,8 +52,6 @@ public class Player : Being
     protected override void Die()
     {
         isDead = true;
-        EventManager.InvokeLose();
-
         //base.Die();
     }
 }
