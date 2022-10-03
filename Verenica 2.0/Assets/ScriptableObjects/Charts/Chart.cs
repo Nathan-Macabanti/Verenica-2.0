@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Chart", menuName = "ScriptableObjects/NewChart", order = 1)]
+[CreateAssetMenu(fileName = "NewChart", menuName = "ScriptableObjects/Chart", order = 1)]
 public class Chart : ScriptableObject
 {
     [Tooltip("You have to include beat 0 as the first element and set all lanes to none")]

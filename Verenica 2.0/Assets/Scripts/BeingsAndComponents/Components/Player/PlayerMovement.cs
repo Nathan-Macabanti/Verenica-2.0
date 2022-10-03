@@ -30,9 +30,26 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Initialize();
+        CenterCharacter();
+    }
+
+    private void Initialize()
+    {
         player = GetComponent<Player>();
         _playerTransform = transform;
-        CenterCharacter();
+        if(slidePoints.Length == 0)
+        {
+            NoteSpawnerGroup noteSpawnerGroup = FindObjectOfType<NoteSpawnerGroup>();
+            NoteSpawner[] noteSpawners = noteSpawnerGroup.GetNoteSpawners();
+            int count = noteSpawners.Length;
+            //Debug.Log(count);
+            slidePoints = new Transform[count];
+            for (int i = 0; i < count; i++)
+            {
+                slidePoints[i] = noteSpawners[i].GetPath().destination;
+            }
+        }
     }
 
     private void Update()

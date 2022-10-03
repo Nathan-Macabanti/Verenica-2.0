@@ -32,12 +32,12 @@ public class SongManager : MonoBehaviour
     private Chart chartCopy;
     
     public float beatOffset;
-    public float BPM;
-    private bool _beatFull;
-    private float _beatTimer;
-    private int _beatCountFull;
+    [HideInInspector] public float BPM;
 
     private bool isOn = true;
+
+    private float _beatTimer;
+    private float dspTimeForBeat;
     #endregion
 
     // Start is called before the first frame update
@@ -49,11 +49,12 @@ public class SongManager : MonoBehaviour
 
     private void InitializeTiming()
     {
-        this.BPM = songInfo.BPM;
+        BPM = songInfo.BPM;
         //this.chartCopy = PhaseManager.GetPhase().SongInfo.chart;
-        this.chartCopy = songInfo.chart; //erase if PhaseManager exists
+        chartCopy = songInfo.chart; //erase if PhaseManager exists
         secondsPerBeat = 60.0f / BPM;
-        this.dspTime = (float)AudioSettings.dspTime; //Must be called when the song starts
+        dspTime = (float)AudioSettings.dspTime; //Must be called when the song starts
+        dspTimeForBeat = (float)AudioSettings.dspTime;
         nextIndex = 0;
     }
 
@@ -71,13 +72,15 @@ public class SongManager : MonoBehaviour
 
         CalculateBeat();
         CheckIfCanSpawn();
-        //BeatDetection();
+        BeatDetection();
     }
 
     private void CalculateBeat()
     {
         songPosition = (float)AudioSettings.dspTime - this.dspTime;
         songPositionInBeats = (float)songPosition / (float)secondsPerBeat;
+        //full beat count
+        _beatTimer = (float)AudioSettings.dspTime - dspTimeForBeat;
     }
 
     private void CheckIfCanSpawn()
@@ -112,15 +115,10 @@ public class SongManager : MonoBehaviour
 
     private void BeatDetection()
     {
-        //full beat count
-        _beatFull = false;
-        _beatTimer += Time.deltaTime;
         if (_beatTimer >= secondsPerBeat)
         {
-            _beatTimer -= secondsPerBeat;
-            _beatFull = true;
-            _beatCountFull++;
-            Debug.Log("doogs");
+            dspTimeForBeat = (float)AudioSettings.dspTime;
+            EventManager.InvokeBeat();
         }
     }
 

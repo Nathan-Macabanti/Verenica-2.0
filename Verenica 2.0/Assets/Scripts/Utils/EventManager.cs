@@ -29,7 +29,17 @@ public static class EventManager
         {
             OnWin?.Invoke();
         }
-        #endregion
+    #endregion
+    #endregion
+
+    #region RHYTHM EVENTS
+    #region NOTE SPAWN EVENT
+    public delegate void Beat();
+    public static event Beat OnBeat;
+    public static void InvokeBeat()
+    {
+        OnBeat?.Invoke();
+    }
     #endregion
 
     #region NOTE SPAWN EVENT
@@ -39,6 +49,7 @@ public static class EventManager
     {
         OnNoteSpawn?.Invoke(beat, index, noteType);
     }
+    #endregion
     #endregion
 
     #region ENEMY DEATH EVENT
