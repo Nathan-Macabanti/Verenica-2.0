@@ -4,17 +4,6 @@ using UnityEngine;
 
 public class Player : Being
 {
-#if false
-    #region Singleton
-    private static Player instance;
-    private void IntializeSingleton()
-    {
-        if (instance == null) { instance = this; }
-        else { Utils.SingletonErrorMessage(this); }
-    }
-    public static Player GetInstance() { return instance; }
-    #endregion
-#endif
     #region Player Attack
     private PlayerAttack playerAttack;
     public PlayerAttack GetPlayerAttack() { return playerAttack; }

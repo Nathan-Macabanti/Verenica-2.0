@@ -5,31 +5,42 @@ using UnityEngine.Events;
 
 public static class EventManager
 {
-    #region GAME IS OVER EVENTS
-        #region GAME IS OVER
-        public delegate void GameIsOver(WinState winstate);
-        public static event GameIsOver OnGameIsOver;
-        public static void InvokeGameOver(WinState winstate)
-        {
-            OnGameIsOver?.Invoke(winstate);
-        }
-        #endregion
-        #region LOSE EVENT
-        public delegate void Lose();
-            public static event Lose OnLose;
-            public static void InvokeLose()
-            {
-                OnLose?.Invoke();
-            }
-        #endregion
-        #region WIN EVENT
-        public delegate void Win();
-        public static event Win OnWin;
-        public static void InvokeWin()
-        {
-            OnWin?.Invoke();
-        }
+    #region GAME EVENTS
+        #region GAME IS OVER EVENTS
+            #region GAME IS OVER
+                public delegate void GameIsOver(WinState winstate);
+                public static event GameIsOver OnGameIsOver;
+                public static void InvokeGameOver(WinState winstate)
+                {
+                    OnGameIsOver?.Invoke(winstate);
+                }
+            #endregion
+            #region LOSE EVENT
+                    public delegate void Lose();
+                    public static event Lose OnLose;
+                    public static void InvokeLose()
+                    {
+                        OnLose?.Invoke();
+                    }
+            #endregion
+            #region WIN EVENT
+                public delegate void Win();
+                public static event Win OnWin;
+                public static void InvokeWin()
+                {
+                    OnWin?.Invoke();
+                }
     #endregion
+    #endregion
+        #region CHANGE PHASE
+        public delegate void PhaseChange(Phase phase);
+        public static event PhaseChange OnPhaseChange;
+        public static void InvokePhaseChange(Phase phase)
+        {
+            OnPhaseChange?.Invoke(phase);
+        }
+        #endregion
+
     #endregion
 
     #region RHYTHM EVENTS

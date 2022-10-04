@@ -44,12 +44,15 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GameObject temp;
         if(_player == null)
-            _player = GameObject.FindGameObjectWithTag(PlayerName).GetComponent<Player>();
-        if (_enemy == null) //Remove once PhaseManager exists
-            _enemy = GameObject.FindGameObjectWithTag(EnemyName).GetComponent<Enemy>();
-
-        //_enemy = will be called in the PhaseManager
+        {
+            temp = GameObject.FindGameObjectWithTag(PlayerName);
+            if(temp.TryGetComponent<Player>(out Player p))
+            {
+                _player = p;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -62,6 +65,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region Methods
+    #region WinAndLoseChecker
     public void Win()
     {
         if (_enemy.IsDead())
@@ -85,15 +90,43 @@ public class GameManager : MonoBehaviour
             //EventManager.InvokeLose();
         }
     }
-
+    #endregion
+    #region Setters
+    #region Player
     public void SetPlayer(Player player)
     {
         _player = player;
     }
-
+    #endregion
+    #region Enemy
     public void SetEnemy(Enemy enemy)
     {
         _enemy = enemy;
     }
+
+    public void SetEnemy(Phase phase)
+    {
+        _enemy = phase.enemy;
+    }
+
+    public void SetEnemyThroughPhaseManager()
+    {
+        PhaseManager phaseManager = PhaseManager.GetInstance();
+        _enemy = PhaseManager.GetInstance().CurrentPhase.enemy;
+    }
+    #endregion
+    #endregion
+    #endregion
+
+    private void OnEnable()
+    {
+        EventManager.OnPhaseChange += SetEnemy;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnPhaseChange -= SetEnemy;
+    }
+
     public WinState GetWinState() { return _winState; }
 }

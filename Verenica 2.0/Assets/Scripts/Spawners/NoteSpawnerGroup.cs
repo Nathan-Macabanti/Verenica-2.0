@@ -14,17 +14,6 @@ public class NoteSpawnerGroup : MonoBehaviour
     }
     public static NoteSpawnerGroup GetInstance() { return instance; }
     #endregion
-    #region Subscribe to event
-    private void OnEnable()
-    {
-        EventManager.OnNoteSpawn += Spawn;
-    }
-
-    private void OnDisable()
-    {
-        EventManager.OnNoteSpawn -= Spawn;
-    }
-    #endregion
 
     [SerializeField] private NoteSpawner[] spawners;
 
@@ -133,6 +122,16 @@ public class NoteSpawnerGroup : MonoBehaviour
         note.transform.position = spawner.GetPath().source.position;
         
         note.initialize(path, beat, key);
+    }
+
+    private void OnEnable()
+    {
+        EventManager.OnNoteSpawn += Spawn;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnNoteSpawn -= Spawn;
     }
 
     public NoteSpawner[] GetNoteSpawners() { return spawners; }

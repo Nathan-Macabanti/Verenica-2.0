@@ -21,79 +21,86 @@ public class SongManager : MonoBehaviour
     }
 
     #region Variables
-    [SerializeField] private SongInfo songInfo;
-    private float songPosition;
-    private float songPositionInBeats;
-    private float secondsPerBeat;
-    private float dspTime;
-    private Radio radio;
+    [SerializeField] private SongInfo _songInfo;
+    private float _songPosition;
+    private float _songPositionInBeats;
+    private float _secondsPerBeat;
+    private float _dspTime;
+    private Radio _radio;
 
-    private int nextIndex;
-    private Chart chartCopy;
+    private int _nextIndex;
+    private Chart _chartCopy;
     
-    public float beatOffset;
+    public float BeatOffset;
     [HideInInspector] public float BPM;
 
-    private bool isOn = true;
+    private bool _isOn = true;
 
     private float _beatTimer;
-    private float dspTimeForBeat;
+    private float _dspTimeForBeat;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
+        InitializeAll();
+    }
+
+    #region Initializers
+    private void InitializeAll()
+    {
         InitializeTiming();
         InitializeAudio();
     }
-
     private void InitializeTiming()
     {
-        BPM = songInfo.BPM;
+        BPM = _songInfo.BPM;
         //this.chartCopy = PhaseManager.GetPhase().SongInfo.chart;
-        chartCopy = songInfo.chart; //erase if PhaseManager exists
-        secondsPerBeat = 60.0f / BPM;
-        dspTime = (float)AudioSettings.dspTime; //Must be called when the song starts
-        dspTimeForBeat = (float)AudioSettings.dspTime;
-        nextIndex = 0;
+        _chartCopy = _songInfo.chart; //erase if PhaseManager exists
+        _secondsPerBeat = 60.0f / BPM;
+        _dspTime = (float)AudioSettings.dspTime; //Must be called when the song starts
+        _dspTimeForBeat = (float)AudioSettings.dspTime;
+        _nextIndex = 0;
     }
 
     private void InitializeAudio()
     {
-        if(radio == null) { radio = this.GetComponent<Radio>(); }
-        radio.SetClip(songInfo.clip);
-        radio.Play();
+        if(_radio == null) { _radio = this.GetComponent<Radio>(); }
+        _radio.SetClip(_songInfo.clip);
+        _radio.Play();
     }
-    
+    #endregion
+
     // Update is called once per frame
     void Update()
     {
-        if (!isOn) return;
+        if (!_isOn) return;
 
         CalculateBeat();
         CheckIfCanSpawn();
         BeatDetection();
     }
 
+    #region Rhythm Calculation Methods
     private void CalculateBeat()
     {
-        songPosition = (float)AudioSettings.dspTime - this.dspTime;
-        songPositionInBeats = (float)songPosition / (float)secondsPerBeat;
+        _songPosition = (float)AudioSettings.dspTime - _dspTime;
+        _songPositionInBeats = _songPosition / _secondsPerBeat;
         //full beat count
-        _beatTimer = (float)AudioSettings.dspTime - dspTimeForBeat;
+        _beatTimer = (float)AudioSettings.dspTime - _dspTimeForBeat;
     }
 
     private void CheckIfCanSpawn()
     {
-        if (nextIndex >= chartCopy.beats.Length) return; //IF THE INDEX IS GREATER THAN THE AMOUNT IN THE CHART or LESS THAN 0
+        if (_nextIndex >= _chartCopy.beats.Length) return; //IF THE INDEX IS GREATER THAN THE AMOUNT IN THE CHART or LESS THAN 0
         
         //SPAWN 
-        float spawnTime = songPositionInBeats + beatOffset;
+        float spawnTime = _songPositionInBeats + BeatOffset;
         float currentBeat = CurrentBeatInfo().beat;
         if (currentBeat < spawnTime)
         {
             CallSpawnEvent(currentBeat);
-            nextIndex++;
+            _nextIndex++;
         }
     }
 
@@ -115,28 +122,47 @@ public class SongManager : MonoBehaviour
 
     private void BeatDetection()
     {
-        if (_beatTimer >= secondsPerBeat)
+        if (_beatTimer >= _secondsPerBeat)
         {
-            dspTimeForBeat = (float)AudioSettings.dspTime;
+            _dspTimeForBeat = (float)AudioSettings.dspTime;
             EventManager.InvokeBeat();
         }
     }
+    #endregion
 
     private void OnEnable()
     {
+        EventManager.OnPhaseChange += ChangeSong;
         EventManager.OnGameIsOver += OnGameOver;
     }
     private void OnDisable()
     {
+        EventManager.OnPhaseChange -= ChangeSong;
         EventManager.OnGameIsOver -= OnGameOver;
     }
 
+    #region Events
     public void OnGameOver(WinState winState)
     {
-        radio.Stop();
-        isOn = false;
+        _radio.Stop();
+        _isOn = false;
+    }
+    #endregion
+
+    #region ChangeSong
+    public void ChangeSong(SongInfo songInfo)
+    {
+        _songInfo = songInfo;
+        InitializeAll();
     }
 
-    public float GetSongPositionInBeats() { return songPositionInBeats; }
-    public BeatInfo CurrentBeatInfo() { return chartCopy.beats[nextIndex]; }
+    public void ChangeSong(Phase phase)
+    {
+        _songInfo = phase.songInfo;
+        InitializeAll();
+    }
+    #endregion
+
+    public float GetSongPositionInBeats() { return _songPositionInBeats; }
+    public BeatInfo CurrentBeatInfo() { return _chartCopy.beats[_nextIndex]; }
 }

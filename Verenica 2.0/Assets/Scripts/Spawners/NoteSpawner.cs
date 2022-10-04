@@ -7,7 +7,6 @@ public class NoteSpawner : MonoBehaviour
     [Tooltip("Children order is source, destination")]
     [SerializeField] private NotePath path;
     [SerializeField] private int key;
-
     private void Awake()
     {
         InitializePath();

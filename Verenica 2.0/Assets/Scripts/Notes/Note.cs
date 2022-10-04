@@ -13,10 +13,14 @@ public abstract class Note : MonoBehaviour
     protected bool isDead;
 
     protected Transform _transform;
+    protected SongManager _songManager;
+    protected ComboSystem _comboSystem;
 
     private void Start()
     {
         _transform = transform;
+        _songManager = SongManager.GetInstance();
+        _comboSystem = ComboSystem.GetInstance();
     }
 
     public void initialize(NotePath _path, float _beat, int _notePos)
@@ -38,8 +42,8 @@ public abstract class Note : MonoBehaviour
         if (path.destination == null) return;
 
         //Caluclate the distance and time you need to travel to the destination so that you will land on beat
-        float songPosInBeats = SongManager.GetInstance().GetSongPositionInBeats();
-        float beatOffset = SongManager.GetInstance().beatOffset;
+        float songPosInBeats = _songManager.GetSongPositionInBeats();
+        float beatOffset = _songManager.BeatOffset;
         float timeToDestinationInBeats = (beat - songPosInBeats);
         float distancePercent = (beatOffset - timeToDestinationInBeats) / beatOffset;
 
@@ -60,10 +64,10 @@ public abstract class Note : MonoBehaviour
         else 
         {
             //Keep moving offscreen at the same velocity as going to the beat line
-            float distanceX = destination.x + (destination.x - source.x);
-            float distanceY = destination.y + (destination.y - source.y);
-            float distanceZ = destination.z + (destination.z - source.z);
-            Vector3 doubleDestination = new Vector3(distanceX, distanceY, distanceZ);
+            float dDistanceX = destination.x + (destination.x - source.x);
+            float dDistanceY = destination.y + (destination.y - source.y);
+            float dDistanceZ = destination.z + (destination.z - source.z);
+            Vector3 doubleDestination = new Vector3(dDistanceX, dDistanceY, dDistanceZ);
             _transform.position = Vector3.Lerp(destination, doubleDestination, distancePercent - 1.0f); //-1 to reset distancePercent to 0.0f
         }
     }
