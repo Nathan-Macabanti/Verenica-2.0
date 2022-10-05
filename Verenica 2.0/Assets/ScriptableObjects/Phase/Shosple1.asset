@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb07f5ca63e2d044bb49f7631fe613d, type: 3}
+  m_Name: Shosple1
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 7116483829958984792, guid: 47863ec914b38b648a3cf931d1e0ed84, type: 3}
+  songInfo: {fileID: 11400000, guid: f1db854c69acbca4e962951710306f2c, type: 2}
