@@ -8,8 +8,6 @@ public class Phase : ScriptableObject
 {
     [Header("Enemy Info")]
     public Enemy enemy;
-    public int currentEnemyHP;
-    public int maxEnemyHP;
 
     [Header("SongInfo")]
     public SongInfo songInfo;

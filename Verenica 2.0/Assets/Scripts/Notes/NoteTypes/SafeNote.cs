@@ -75,7 +75,7 @@ public class SafeNote : Note
 
     public void OnEnemyCollided()
     {
-        PlayerAttack pAttack = _gameManger.Player.GetPlayerAttack();
+        PlayerAttack pAttack = _gameManger.Player.playerAttack;
         _target.Damage(pAttack.CurrentAttackValue * (int)ComboSystem.GetInstance().Multiplier);
         ReturnToPool();
     }

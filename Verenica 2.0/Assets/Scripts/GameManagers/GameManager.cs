@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum WinState { win, lose, none }
+public enum GameState { playing, paused, ended }
 
 public class GameManager : MonoBehaviour
 {
@@ -24,7 +25,16 @@ public class GameManager : MonoBehaviour
     public Player Player { get { return _player; } }
     #endregion
 
-    private WinState _winState = WinState.none;
+    private GameState _gameState;
+    public GameState GameState { 
+        get { return _gameState; } 
+        set 
+        { 
+            _gameState = value;
+            CheckIfGameStateValueChanged();
+        } 
+    }
+    public WinState _winState { get; private set; } = WinState.none;
     //private bool gameIsOver = false;
 
     #endregion
@@ -32,12 +42,13 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         IntializeSingleton();
+        Initialize();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Initialize();
+        
     }
 
     private void Initialize()
@@ -62,6 +73,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        CheckIfWin();
+    }
+
+    void CheckIfWin()
+    {
         //If game is not over, the winState is neither Win or Lose
         if (_winState == WinState.none)
         {
@@ -69,6 +85,11 @@ public class GameManager : MonoBehaviour
             Win();
             Lose();
         }
+    }
+
+    void CheckIfGameStateValueChanged()
+    {
+        EventManager.InvokeGameStateChanged(_gameState);
     }
 
 #region Methods
@@ -105,14 +126,4 @@ public class GameManager : MonoBehaviour
 #endregion
 #endregion
 #endregion
-
-    private void OnEnable()
-    {
-    }
-
-    private void OnDisable()
-    {
-    }
-
-    public WinState GetWinState() { return _winState; }
 }

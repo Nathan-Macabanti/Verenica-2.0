@@ -5,12 +5,9 @@ using UnityEngine;
 public class Player : Being
 {
     #region Player Attack
-    private PlayerAttack playerAttack;
-    public PlayerAttack GetPlayerAttack() { return playerAttack; }
-    #endregion
-    #region Player Movement
-    private PlayerMovement playerMovement;
-    public PlayerMovement GetPlayerMovement() { return playerMovement; }
+    public PlayerAttack playerAttack { get; private set; }
+    public PlayerMovement playerMovement { get; private set; }
+    public Wallet playerWallet { get; private set; }
     #endregion
 
     //private float 
@@ -29,6 +26,10 @@ public class Player : Being
         if(TryGetComponent<PlayerMovement>(out PlayerMovement pMovement))
         {
             playerMovement = pMovement;
+        }
+        if(TryGetComponent<Wallet>(out Wallet wallet))
+        {
+            playerWallet = wallet;
         }
     }
 

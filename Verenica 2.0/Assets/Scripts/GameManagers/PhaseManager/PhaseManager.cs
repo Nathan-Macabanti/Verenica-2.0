@@ -15,18 +15,20 @@ public class PhaseManager : MonoBehaviour
     #endregion
 
     [SerializeField] private Phase[] _phases;
-    [SerializeField] private int _startingIndex = 0;
+    public int _startingIndex = 0;
     public Phase[] PhaseArray { get { return _phases; } }
-
+    public int _index { get; private set; }
     private Queue<Phase> phaseQueue = new Queue<Phase>(); //To make the process faster
-    private int _index = 0;
     public Phase CurrentPhase { get { return _phases[_index]; } }
+
+    public bool isOnTheFirstPhase { get; private set; } = true;
 
     // Start is called before the first frame update
     void Awake()
     {
         Initialize();
         InitializeSingleton();
+        isOnTheFirstPhase = true;
     }
 
     private void Start()
@@ -43,7 +45,7 @@ public class PhaseManager : MonoBehaviour
     private void InitializePhases()
     {
         _index = _startingIndex;
-        int count = _phases.Length;
+        int count = _phases.Length - _index;
         for (int i = _startingIndex; i < count; i++)
         {
             phaseQueue.Enqueue(_phases[i]);
@@ -56,15 +58,24 @@ public class PhaseManager : MonoBehaviour
     {
         if (phaseQueue.Count == 0) return;
 
+        _index++;
         Phase phase = phaseQueue.Dequeue();
         EventManager.InvokePhaseChange(phase);
+        isOnTheFirstPhase = false;
     }
 
     public void NextPhase(int index)
     {
-        int _index = index;
-        Phase phase = CurrentPhase;
+        _index = index;
+        int count = _phases.Length - _index;
+        for (int i = _startingIndex; i < count; i++)
+        {
+            phaseQueue.Enqueue(_phases[i]);
+        }
+        Phase phase = phaseQueue.Dequeue();
+        
         EventManager.InvokePhaseChange(phase);
+        isOnTheFirstPhase = false;
     }
     #endregion
 

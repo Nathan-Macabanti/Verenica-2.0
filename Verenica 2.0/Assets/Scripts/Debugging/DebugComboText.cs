@@ -9,6 +9,7 @@ public class DebugComboText : MonoBehaviour
 {
     ComboSystem comboSystem;
     TextMeshProUGUI comboTxt;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +17,20 @@ public class DebugComboText : MonoBehaviour
         comboTxt = GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        StringBuilder stringBuilder = new StringBuilder("Combo: ");
-        comboTxt.text = stringBuilder.Append(
-            comboSystem.CollectedNotes.ToString() + " || " + comboSystem.LetterRank
-            ).ToString();
+        EventManager.OnComboValueChanged += OnComboValueChanged;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnComboValueChanged -= OnComboValueChanged;
+    }
+
+    public void OnComboValueChanged(uint combo, string letterRank)
+    {
+        if (combo == 0) comboTxt.text = " ";
+
+        comboTxt.text = "Combo: " + combo.ToString() + " || " + letterRank;
     }
 }

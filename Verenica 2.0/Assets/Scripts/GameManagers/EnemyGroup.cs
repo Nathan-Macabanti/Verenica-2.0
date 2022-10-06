@@ -27,8 +27,8 @@ public class EnemyGroup : MonoBehaviour
         if (currentEnemy != null) currentEnemy = null;
 
         currentEnemy = phase.enemy;
-        currentEnemy.SetHealth(phase.currentEnemyHP, phase.maxEnemyHP);
         Instantiate(currentEnemy.gameObject, transform.position, Quaternion.identity, transform);
+        currentEnemy.InitializeHP();
     }
 
     private void OnEnable()

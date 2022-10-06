@@ -49,6 +49,11 @@ public class SongManager : MonoBehaviour
     }
     private void InitializeTiming()
     {
+        //Reset song Position
+        _songPosition = 0;
+        _songPositionInBeats = 0;
+
+        //Calculate songPos variables
         BPM = _songInfo.BPM;
         _secondsPerBeat = 60.0f / BPM;
         _dspTime = (float)AudioSettings.dspTime; //Must be called when the song starts
@@ -126,11 +131,13 @@ public class SongManager : MonoBehaviour
     {
         EventManager.OnPhaseChange += ChangeSong;
         EventManager.OnGameIsOver += OnGameOver;
+        EventManager.OnGameStateChanged += OnGameStateChange;
     }
     private void OnDisable()
     {
         EventManager.OnPhaseChange -= ChangeSong;
         EventManager.OnGameIsOver -= OnGameOver;
+        EventManager.OnGameStateChanged -= OnGameStateChange;
     }
 
     #region Events
@@ -158,6 +165,22 @@ public class SongManager : MonoBehaviour
         InitializeAll();
     }
     #endregion
+
+    public void OnGameStateChange(GameState state)
+    {
+        if (state == GameState.playing) 
+        {
+            //https://docs.unity3d.com/ScriptReference/AudioSettings-dspTime.html
+            _dspTime = (float)AudioSettings.dspTime - _songPosition; //Resume to the songPosition
+            //_dspTimeForBeat = (float)AudioSettings.dspTime;
+            _isOn = true;
+            _radio.Play();
+            return;
+        }
+
+        _isOn = false;
+        _radio.Pause();
+    }
 
     public float GetSongPositionInBeats() { return _songPositionInBeats; }
     public BeatInfo CurrentBeatInfo() { return _chartCopy.beats[_nextIndex]; }

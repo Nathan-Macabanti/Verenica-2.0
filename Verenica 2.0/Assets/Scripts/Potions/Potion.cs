@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class Potion : MonoBehaviour
 {
-    public abstract void Effect(GameObject obj);
+    public abstract void UseMe(GameObject obj);
 }

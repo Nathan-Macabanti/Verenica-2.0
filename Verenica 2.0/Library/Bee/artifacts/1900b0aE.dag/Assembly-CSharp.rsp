@@ -417,11 +417,16 @@
 "Assets/Scripts/Potions/HealthPotion.cs"
 "Assets/Scripts/Potions/Potion.cs"
 "Assets/Scripts/RhythmManagement/SongManager.cs"
+"Assets/Scripts/Shop/Shop.cs"
+"Assets/Scripts/Shop/Stock.cs"
+"Assets/Scripts/Shop/Wallet.cs"
 "Assets/Scripts/Spawners/NoteSpawner.cs"
 "Assets/Scripts/Spawners/NoteSpawnerGroup.cs"
 "Assets/Scripts/Utils/EventManager.cs"
 "Assets/Scripts/Utils/MyMath.cs"
 "Assets/Scripts/Utils/Utils.cs"
+"Assets/ShopButton.cs"
+"Assets/ShopUI.cs"
 -langversion:9.0
 
 /deterministic

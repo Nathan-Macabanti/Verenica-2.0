@@ -20,7 +20,14 @@ public class ComboSystem : MonoBehaviour
     #region Collected Notes
 
     private uint collectedNotes = 0;
-    public uint CollectedNotes { get { return collectedNotes; } }
+    public uint CollectedNotes { 
+        get { return collectedNotes; }
+        set 
+        {
+            collectedNotes = value;
+            OnValueChanged();
+        }
+    }
     #endregion
     private uint maxCollectionThreshold;
     private uint currentMultiplier;
@@ -31,22 +38,8 @@ public class ComboSystem : MonoBehaviour
     private uint AcollectedNoteReq = 35, Amultipler = 8;
     private uint ScollectedNoteReq = 55, Smultipler = 13;
     private uint SScollectedNoteReq = 80, SSmultipler = 20;
-    public string LetterRank
-    {
-        get
-        {
-            if (currentMultiplier == Dmultipler) return "D";
-            else if (currentMultiplier == Cmultipler) return "C";
-            else if (currentMultiplier == Bmultipler) return "B";
-            else if (currentMultiplier == Amultipler) return "A";
-            else if (currentMultiplier == Smultipler) return "S";
-            else if (currentMultiplier == SSmultipler) return "SS";
-
-            return "F";
-        }
-    }
+    private string _letterRank;
     public uint Multiplier { get{ return currentMultiplier; } }
-    private uint prevCollectedNotes;
 
     private void Start()
     {
@@ -68,56 +61,56 @@ public class ComboSystem : MonoBehaviour
         EventManager.OnPlayerAttack -= CollectNote;
     }
 
-    public void Update()
-    {
-        OnValueChanged();
-    }
-
-    public void UpdateMultiplier()
+    public void UpdateRank()
     {
         if(collectedNotes >= 0 && collectedNotes < DcollectedNoteReq) //F
         {
             currentMultiplier = 1;
+            _letterRank = "F";
         }
         else if (collectedNotes >= DcollectedNoteReq && collectedNotes < CcollectedNoteReq) //D
         {
             currentMultiplier = Dmultipler;
+            _letterRank = "D";
         }
         else if (collectedNotes >= CcollectedNoteReq && collectedNotes < BcollectedNoteReq) //C
         {
             currentMultiplier = Cmultipler;
+            _letterRank = "C";
         }
+
         else if (collectedNotes >= BcollectedNoteReq && collectedNotes < AcollectedNoteReq) //B
         {
             currentMultiplier = Bmultipler;
+            _letterRank = "B";
         }
         else if (collectedNotes >= AcollectedNoteReq && collectedNotes < ScollectedNoteReq) //A
         {
             currentMultiplier = Amultipler;
+            _letterRank = "A";
         }
         else if (collectedNotes >= ScollectedNoteReq && collectedNotes < SScollectedNoteReq) //S
         {
             currentMultiplier = Smultipler;
+            _letterRank = "S";
         }
         else if(collectedNotes >= SScollectedNoteReq) //SS
         {
             currentMultiplier = SSmultipler;
+            _letterRank = "SS";
         }
     }
 
     private void OnValueChanged()
     {
-        if (prevCollectedNotes == collectedNotes) return;
-
-        UpdateMultiplier();
-
-        prevCollectedNotes = collectedNotes;
+        UpdateRank();
+        EventManager.InvokeComboValueChanged(collectedNotes, _letterRank);
     }
 
     public void CollectNote()
     {
-        collectedNotes++;
-        collectedNotes = (uint)Mathf.Clamp(collectedNotes, 0, maxCollectionThreshold);
+        CollectedNotes++;
+        CollectedNotes = (uint)Mathf.Clamp(collectedNotes, 0, maxCollectionThreshold);
     }
 
     public void ResetCollectedNote()

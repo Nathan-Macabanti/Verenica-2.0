@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPotion : MonoBehaviour
+public class HealthPotion : Potion
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int healingValue = 1;
 
-    // Update is called once per frame
-    void Update()
+    public override void UseMe(GameObject obj)
     {
-        
+        if(obj.TryGetComponent<Being>(out Being being))
+        {
+            being.Heal(healingValue);
+        }
     }
 }

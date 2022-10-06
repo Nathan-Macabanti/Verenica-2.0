@@ -63,6 +63,8 @@
     <Compile Include="Assets\ScriptableObjects\Charts\Chart.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\EnemyCollider.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Shop\Wallet.cs" />
+    <Compile Include="Assets\Scripts\Notes\NoteTypes\GimmickNotes\Samples\SwiggleSafeNote.cs" />
     <Compile Include="Assets\Scripts\RhythmManagement\SongManager.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Spawners\NoteSpawner.cs" />
@@ -71,12 +73,14 @@
     <Compile Include="Assets\Scripts\Spawners\NoteSpawnerGroup.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Player.cs" />
     <Compile Include="Assets\Scripts\Utils\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Shop\Stock.cs" />
     <Compile Include="Assets\Scripts\Debugging\DebugHPText.cs" />
     <Compile Include="Assets\Scripts\Debugging\DebugBeatSparklesSpawner.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
     <Compile Include="Assets\Scripts\Data\NoteInfo.cs" />
     <Compile Include="Assets\Scripts\GameManagers\PhaseManager\PhaseManager.cs" />
+    <Compile Include="Assets\ShopButton.cs" />
     <Compile Include="Assets\Scripts\Notes\NoteTypes\DangerNote.cs" />
     <Compile Include="Assets\Scripts\Utils\MyMath.cs" />
     <Compile Include="Assets\ScriptableObjects\Phase\Phase.cs" />
@@ -86,12 +90,13 @@
     <Compile Include="Assets\Scripts\Notes\Note.cs" />
     <Compile Include="Assets\Scripts\GameManagers\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameManagers\EnemyGroup.cs" />
-    <Compile Include="Assets\Scripts\BeingsAndComponents\Enemies\Shosple.cs" />
-    <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\PlayerCollider.cs" />
-    <Compile Include="Assets\ScriptableObjects\SongInfo\SongInfo.cs" />
-    <Compile Include="Assets\Scripts\Notes\NoteTypes\GimmickNotes\Samples\SwiggleSafeNote.cs" />
-    <Compile Include="Assets\Scripts\Potions\Potion.cs" />
     <Compile Include="Assets\Scripts\Potions\HealthPotion.cs" />
+    <Compile Include="Assets\Scripts\BeingsAndComponents\Enemies\Shosple.cs" />
+    <Compile Include="Assets\ShopUI.cs" />
+    <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\PlayerCollider.cs" />
+    <Compile Include="Assets\Scripts\Shop\Shop.cs" />
+    <Compile Include="Assets\ScriptableObjects\SongInfo\SongInfo.cs" />
+    <Compile Include="Assets\Scripts\Potions\Potion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

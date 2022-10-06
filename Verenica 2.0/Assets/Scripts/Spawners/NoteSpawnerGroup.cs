@@ -56,9 +56,13 @@ public class NoteSpawnerGroup : MonoBehaviour
     {
         InitializeDangerNotePool();
         InitializeSafeNotePool();
+        InitializeGimmickNote1Pool();
+        InitializeGimmickNote2Pool();
     }
     private void InitializeDangerNotePool()
     {
+        if (DangerNote == null) return;
+
         danger_Note_Pool = new ObjectPool<Note>(() =>
         {
             var note = Instantiate(DangerNote);
@@ -78,6 +82,8 @@ public class NoteSpawnerGroup : MonoBehaviour
 
     private void InitializeSafeNotePool()
     {
+        if (SafeNote == null) return;
+
         safe_Note_Pool = new ObjectPool<Note>(() =>
         {
             var note = Instantiate(SafeNote);
@@ -97,6 +103,8 @@ public class NoteSpawnerGroup : MonoBehaviour
 
     private void InitializeGimmickNote1Pool()
     {
+        if (GimmickNote1 == null) return;
+
         gimmick1_Note_Pool = new ObjectPool<Note>(() =>
         {
             var note = Instantiate(GimmickNote1);
@@ -116,6 +124,8 @@ public class NoteSpawnerGroup : MonoBehaviour
 
     private void InitializeGimmickNote2Pool()
     {
+        if (DangerNote == null) return;
+
         gimmick2_Note_Pool = new ObjectPool<Note>(() =>
         {
             var note = Instantiate(GimmickNote2);

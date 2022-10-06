@@ -29,7 +29,7 @@ public class Being : MonoBehaviour
     {
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-        //Debug.Log(gameObject.name + ": " + currentHP);
+        //Debug.Log($"{gameObject.name} : {damage}");
         //If your HP is 0 die
         if (currentHP <= 0)
             Die();
