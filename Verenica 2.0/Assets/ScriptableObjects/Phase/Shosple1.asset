@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: Shosple1
   m_EditorClassIdentifier: 
   enemy: {fileID: 7116483829958984792, guid: 47863ec914b38b648a3cf931d1e0ed84, type: 3}
+  currentEnemyHP: 3
+  maxEnemyHP: 3
   songInfo: {fileID: 11400000, guid: f1db854c69acbca4e962951710306f2c, type: 2}
+  dangerNote: {fileID: 2635829180454675019, guid: 73f368c3396cf7747965a24917fcb8c7, type: 3}
+  safeNote: {fileID: 1956020572647224516, guid: c7e09eb9412bafc4bb0368f038ca77d4, type: 3}
+  GimmickNote1: {fileID: 0}
+  GimmickNote2: {fileID: 0}

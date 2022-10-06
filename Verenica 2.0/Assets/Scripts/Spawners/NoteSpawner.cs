@@ -17,9 +17,8 @@ public class NoteSpawner : MonoBehaviour
         if (path.source != null && path.destination != null) return;//If there is already a set source and destination no need to initialize
 
         Transform[] transform = GetComponentsInChildren<Transform>();
-        Debug.Log(transform.Length);
         if(path.source == null)
-            path.source = transform[1];
+            path.source = transform[1]; //1 is the first child (top most after parent)
 
         if(path.destination == null)
             path.destination = transform[2];

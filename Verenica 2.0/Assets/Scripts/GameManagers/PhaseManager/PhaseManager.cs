@@ -6,7 +6,7 @@ public class PhaseManager : MonoBehaviour
 {
     #region Singleton
     private static PhaseManager instance;
-    private void IntializeSingleton()
+    private void InitializeSingleton()
     {
         if (instance == null) { instance = this; }
         else { Utils.SingletonErrorMessage(this); }
@@ -16,24 +16,22 @@ public class PhaseManager : MonoBehaviour
 
     [SerializeField] private Phase[] _phases;
     [SerializeField] private int _startingIndex = 0;
+    public Phase[] PhaseArray { get { return _phases; } }
 
     private Queue<Phase> phaseQueue = new Queue<Phase>(); //To make the process faster
     private int _index = 0;
     public Phase CurrentPhase { get { return _phases[_index]; } }
 
-    private SongManager songManager;
-    private GameManager gameManager; 
-
     // Start is called before the first frame update
     void Awake()
     {
         Initialize();
+        InitializeSingleton();
     }
 
     private void Start()
     {
-        songManager = SongManager.GetInstance();
-        gameManager = GameManager.GetInstance();
+        NextPhase();
     }
 
     #region Initialization
@@ -50,8 +48,6 @@ public class PhaseManager : MonoBehaviour
         {
             phaseQueue.Enqueue(_phases[i]);
         }
-
-        NextPhase();
     }
     #endregion
 
@@ -71,4 +67,24 @@ public class PhaseManager : MonoBehaviour
         EventManager.InvokePhaseChange(phase);
     }
     #endregion
+
+    public bool QueueIsEmpty()
+    {
+        if (phaseQueue.Count == 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private void OnEnable()
+    {
+        EventManager.OnEnemyDied += NextPhase;
+    }
+
+    private void OnDisable()
+    {
+        EventManager.OnEnemyDied -= NextPhase;
+    }
 }

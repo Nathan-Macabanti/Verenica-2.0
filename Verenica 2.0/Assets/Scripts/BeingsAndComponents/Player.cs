@@ -37,10 +37,4 @@ public class Player : Being
         base.Damage(damage);
         EventManager.InvokePlayerDamaged();
     }
-
-    protected override void Die()
-    {
-        isDead = true;
-        //base.Die();
-    }
 }

@@ -108,12 +108,24 @@ public class PlayerMovement : MonoBehaviour
 
     public void CenterCharacter()
     {
+        if (currentPosition == 1) return;
+
         currentPosition = 1;
         _playerTransform.position = slidePoints[currentPosition].localPosition;
     }
 
+    public void OnPhaseChange(Phase phase)
+    {
+        CenterCharacter();
+    }
+
+    private void OnEnable()
+    {
+        EventManager.OnPhaseChange += OnPhaseChange;
+    }
     private void OnDisable()
     {
+        EventManager.OnPhaseChange -= OnPhaseChange;
         StopAllCoroutines();
     }
 

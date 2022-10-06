@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 455660e89b12f48448aabbbfca324ff7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _songInfo: {fileID: 11400000, guid: f1db854c69acbca4e962951710306f2c, type: 2}
+  _songInfo: {fileID: 0}
   BeatOffset: 3
   BPM: 0
 --- !u!1 &6153536562785178808
@@ -205,10 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57ecd700c000ff7409c417a7806d4fb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerName: Player
-  EnemyName: Shosple
   _player: {fileID: 0}
-  _enemy: {fileID: 0}
 --- !u!114 &6153536562785178813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,12 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea132fda2bbaff4f8e455b4bbc4dff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DcollectedNoteReq: 5
-  CcollectedNoteReq: 10
-  BcollectedNoteReq: 20
-  AcollectedNoteReq: 35
-  ScollectedNoteReq: 55
-  SScollectedNoteReq: 80
 --- !u!114 &1589853256750568139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,8 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3c73b80d05be7428b3d3f47e31f855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _phases:
-  - {fileID: 11400000, guid: cb98dc9bdc943f245a9852e95588f124, type: 2}
+  _phases: []
   _startingIndex: 0
 --- !u!1 &6153536563472960195
 GameObject:

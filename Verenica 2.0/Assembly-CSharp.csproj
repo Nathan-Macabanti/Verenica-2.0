@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\Pathfinding\Path.cs" />
     <Compile Include="Assets\Scripts\MusicManagement\Radio.cs" />
     <Compile Include="Assets\Scripts\GameManagers\ComboSystem.cs" />
+    <Compile Include="Assets\Scripts\Debugging\DebugComboText.cs" />
     <Compile Include="Assets\ScriptableObjects\Charts\Chart.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\EnemyCollider.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Enemy.cs" />
@@ -70,22 +71,27 @@
     <Compile Include="Assets\Scripts\Spawners\NoteSpawnerGroup.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Player.cs" />
     <Compile Include="Assets\Scripts\Utils\EventManager.cs" />
+    <Compile Include="Assets\Scripts\Debugging\DebugHPText.cs" />
     <Compile Include="Assets\Scripts\Debugging\DebugBeatSparklesSpawner.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
     <Compile Include="Assets\Scripts\Data\NoteInfo.cs" />
+    <Compile Include="Assets\Scripts\GameManagers\PhaseManager\PhaseManager.cs" />
     <Compile Include="Assets\Scripts\Notes\NoteTypes\DangerNote.cs" />
     <Compile Include="Assets\Scripts\Utils\MyMath.cs" />
+    <Compile Include="Assets\ScriptableObjects\Phase\Phase.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Data\Stats.cs" />
     <Compile Include="Assets\Scripts\Notes\NoteTypes\SafeNote.cs" />
     <Compile Include="Assets\Scripts\Notes\Note.cs" />
     <Compile Include="Assets\Scripts\GameManagers\GameManager.cs" />
+    <Compile Include="Assets\Scripts\GameManagers\EnemyGroup.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Enemies\Shosple.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\PlayerCollider.cs" />
     <Compile Include="Assets\ScriptableObjects\SongInfo\SongInfo.cs" />
-    <Compile Include="Assets\Scripts\GameManagers\PhaseManager\PhaseManager.cs" />
-    <Compile Include="Assets\Scripts\GameManagers\PhaseManager\Phase.cs" />
+    <Compile Include="Assets\Scripts\Notes\NoteTypes\GimmickNotes\Samples\SwiggleSafeNote.cs" />
+    <Compile Include="Assets\Scripts\Potions\Potion.cs" />
+    <Compile Include="Assets\Scripts\Potions\HealthPotion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

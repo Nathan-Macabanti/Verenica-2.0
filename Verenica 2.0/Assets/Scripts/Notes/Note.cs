@@ -15,12 +15,14 @@ public abstract class Note : MonoBehaviour
     protected Transform _transform;
     protected SongManager _songManager;
     protected ComboSystem _comboSystem;
+    protected GameManager _gameManger;
 
     private void Start()
     {
         _transform = transform;
         _songManager = SongManager.GetInstance();
         _comboSystem = ComboSystem.GetInstance();
+        _gameManger = GameManager.GetInstance();
     }
 
     public void initialize(NotePath _path, float _beat, int _notePos)
@@ -82,10 +84,12 @@ public abstract class Note : MonoBehaviour
 
     private void OnEnable()
     {
+        EventManager.OnEnemyDied += ReturnToPool;
         EventManager.OnGameIsOver += OnGameOver;
     }
     private void OnDisable()
     {
+        EventManager.OnEnemyDied -= ReturnToPool;
         EventManager.OnGameIsOver -= OnGameOver;
     }
 

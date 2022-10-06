@@ -7,7 +7,7 @@ public class SongManager : MonoBehaviour
 {
     #region Singleton
     private static SongManager instance;
-    private void IntializeSingleton() 
+    private void InitializeSingleton() 
     {
         if (instance == null) { instance = this; }
         else { Utils.SingletonErrorMessage(this); }
@@ -17,7 +17,8 @@ public class SongManager : MonoBehaviour
 
     private void Awake()
     {
-        IntializeSingleton();
+        InitializeSingleton();
+        if (_radio == null) { _radio = this.GetComponent<Radio>(); }
     }
 
     #region Variables
@@ -40,12 +41,6 @@ public class SongManager : MonoBehaviour
     private float _dspTimeForBeat;
     #endregion
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        InitializeAll();
-    }
-
     #region Initializers
     private void InitializeAll()
     {
@@ -55,8 +50,6 @@ public class SongManager : MonoBehaviour
     private void InitializeTiming()
     {
         BPM = _songInfo.BPM;
-        //this.chartCopy = PhaseManager.GetPhase().SongInfo.chart;
-        _chartCopy = _songInfo.chart; //erase if PhaseManager exists
         _secondsPerBeat = 60.0f / BPM;
         _dspTime = (float)AudioSettings.dspTime; //Must be called when the song starts
         _dspTimeForBeat = (float)AudioSettings.dspTime;
@@ -65,7 +58,6 @@ public class SongManager : MonoBehaviour
 
     private void InitializeAudio()
     {
-        if(_radio == null) { _radio = this.GetComponent<Radio>(); }
         _radio.SetClip(_songInfo.clip);
         _radio.Play();
     }
@@ -152,13 +144,17 @@ public class SongManager : MonoBehaviour
     #region ChangeSong
     public void ChangeSong(SongInfo songInfo)
     {
+        _radio.Stop();
         _songInfo = songInfo;
+        _chartCopy = _songInfo.chart;
         InitializeAll();
     }
 
     public void ChangeSong(Phase phase)
     {
+        _radio.Stop();
         _songInfo = phase.songInfo;
+        _chartCopy = _songInfo.chart;
         InitializeAll();
     }
     #endregion

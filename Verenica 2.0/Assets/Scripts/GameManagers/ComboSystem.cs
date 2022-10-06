@@ -5,7 +5,7 @@ using UnityEngine;
 public class ComboSystem : MonoBehaviour
 {
     private static ComboSystem instance;
-    private void IntializeSingleton()
+    private void InitializeSingleton()
     {
         if (instance == null) { instance = this; }
         else { Utils.SingletonErrorMessage(this); }
@@ -14,20 +14,37 @@ public class ComboSystem : MonoBehaviour
 
     private void Awake()
     {
-        IntializeSingleton();
+        InitializeSingleton();
     }
 
+    #region Collected Notes
+
     private uint collectedNotes = 0;
+    public uint CollectedNotes { get { return collectedNotes; } }
+    #endregion
     private uint maxCollectionThreshold;
     private uint currentMultiplier;
-    
-    private uint DcollectedNoteReq = 5;
-    private uint CcollectedNoteReq = 10;
-    private uint BcollectedNoteReq = 20;
-    private uint AcollectedNoteReq = 35;
-    private uint ScollectedNoteReq = 55;
-    private uint SScollectedNoteReq = 80;
 
+    private uint DcollectedNoteReq = 5, Dmultipler = 2;
+    private uint CcollectedNoteReq = 10, Cmultipler = 3;
+    private uint BcollectedNoteReq = 20, Bmultipler = 5;
+    private uint AcollectedNoteReq = 35, Amultipler = 8;
+    private uint ScollectedNoteReq = 55, Smultipler = 13;
+    private uint SScollectedNoteReq = 80, SSmultipler = 20;
+    public string LetterRank
+    {
+        get
+        {
+            if (currentMultiplier == Dmultipler) return "D";
+            else if (currentMultiplier == Cmultipler) return "C";
+            else if (currentMultiplier == Bmultipler) return "B";
+            else if (currentMultiplier == Amultipler) return "A";
+            else if (currentMultiplier == Smultipler) return "S";
+            else if (currentMultiplier == SSmultipler) return "SS";
+
+            return "F";
+        }
+    }
     public uint Multiplier { get{ return currentMultiplier; } }
     private uint prevCollectedNotes;
 
@@ -39,14 +56,16 @@ public class ComboSystem : MonoBehaviour
 
     public void OnEnable()
     {
+        EventManager.OnEnemyDied += ResetCollectedNote;
         EventManager.OnPlayerDamaged += ResetCollectedNote;
         EventManager.OnPlayerAttack += CollectNote;
     }
 
     public void OnDisable()
     {
-        EventManager.OnPlayerDamaged += ResetCollectedNote;
-        EventManager.OnPlayerAttack += CollectNote;
+        EventManager.OnEnemyDied -= ResetCollectedNote;
+        EventManager.OnPlayerDamaged -= ResetCollectedNote;
+        EventManager.OnPlayerAttack -= CollectNote;
     }
 
     public void Update()
@@ -56,37 +75,33 @@ public class ComboSystem : MonoBehaviour
 
     public void UpdateMultiplier()
     {
-        if(collectedNotes <= 0)
+        if(collectedNotes >= 0 && collectedNotes < DcollectedNoteReq) //F
         {
             currentMultiplier = 1;
-        }  
-        else if(collectedNotes > 0 && collectedNotes <= DcollectedNoteReq)
-        {
-            currentMultiplier = 2;
         }
-        else if (collectedNotes > DcollectedNoteReq && collectedNotes <= CcollectedNoteReq)
+        else if (collectedNotes >= DcollectedNoteReq && collectedNotes < CcollectedNoteReq) //D
         {
-            currentMultiplier = 3;
+            currentMultiplier = Dmultipler;
         }
-        else if (collectedNotes > CcollectedNoteReq && collectedNotes <= BcollectedNoteReq)
+        else if (collectedNotes >= CcollectedNoteReq && collectedNotes < BcollectedNoteReq) //C
         {
-            currentMultiplier = 5;
+            currentMultiplier = Cmultipler;
         }
-        else if (collectedNotes > BcollectedNoteReq && collectedNotes <= AcollectedNoteReq)
+        else if (collectedNotes >= BcollectedNoteReq && collectedNotes < AcollectedNoteReq) //B
         {
-            currentMultiplier = 8;
+            currentMultiplier = Bmultipler;
         }
-        else if (collectedNotes > AcollectedNoteReq && collectedNotes <= ScollectedNoteReq)
+        else if (collectedNotes >= AcollectedNoteReq && collectedNotes < ScollectedNoteReq) //A
         {
-            currentMultiplier = 13;
+            currentMultiplier = Amultipler;
         }
-        else if (collectedNotes > ScollectedNoteReq && collectedNotes <= SScollectedNoteReq)
+        else if (collectedNotes >= ScollectedNoteReq && collectedNotes < SScollectedNoteReq) //S
         {
-            currentMultiplier = 20;
+            currentMultiplier = Smultipler;
         }
-        else
+        else if(collectedNotes >= SScollectedNoteReq) //SS
         {
-            currentMultiplier = 30;
+            currentMultiplier = SSmultipler;
         }
     }
 
