@@ -64,8 +64,8 @@
     <Compile Include="Library\PackageCache\com.unity.2d.animation@7.0.6\Editor\SkinningModule\MeshPreviewTool\MeshPreviewTool.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@7.0.6\Editor\SkinningModule\SkeletonTool\SkeletonToolWrapper.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@7.0.6\Editor\SkinningModule\ModuleUtility.cs" />
-    <Compile Include="Library\PackageCache\com.unity.2d.animation@7.0.6\Editor\SkinningModule\VisibilityTool\VisibilityTool.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@7.0.6\Editor\SkinningModule\SkinningCache\MeshPreviewCache.cs" />
+    <Compile Include="Library\PackageCache\com.unity.2d.animation@7.0.6\Editor\SkinningModule\VisibilityTool\VisibilityTool.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@7.0.6\Editor\SpriteLib\SpriteLibraryDataProvider.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@7.0.6\Editor\SpriteLib\SpriteLibraryAssetInspector.cs" />
     <Compile Include="Library\PackageCache\com.unity.2d.animation@7.0.6\Editor\SkinningModule\IMGUI\WeightInspector.cs" />
