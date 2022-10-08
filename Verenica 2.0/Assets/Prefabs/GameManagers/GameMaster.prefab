@@ -230,7 +230,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e3c73b80d05be7428b3d3f47e31f855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _phases: []
+  _phases:
+  - {fileID: 11400000, guid: cb98dc9bdc943f245a9852e95588f124, type: 2}
+  - {fileID: 11400000, guid: 45cc752a101eca74f8fefd25e244b624, type: 2}
   _startingIndex: 0
 --- !u!1 &6153536563472960195
 GameObject:

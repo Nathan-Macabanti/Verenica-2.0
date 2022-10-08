@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Player))]
 public class PlayerMovement : MonoBehaviour
 {
-    #if false
+#if false
     #region OnMove
         public delegate void PlayerMove();
         public event PlayerMove OnPlayerMove;
@@ -14,14 +14,22 @@ public class PlayerMovement : MonoBehaviour
             OnPlayerMove?.Invoke();
         }
     #endregion
-    #endif
+#endif
     [SerializeField] private Transform[] slidePoints;
     [SerializeField] private float jumpHeight = 0.5f;
-    [SerializeField] private float airTime = 0.2f;
-    [SerializeField] private float coolDown = 0.1f;
+
+    [Header("Cooldown times")]
+    [SerializeField] private float startingCoolDown = 0.2f;
+    [SerializeField] private float minCoolDownTime = 0.1f;
+    [SerializeField] private float maxCoolDownTime = 0.25f;
+    public float coolDown { get; private set; }
+    public float coolDownTimer { get; private set; }
+    public float coolDownTimerPercent { get { return coolDownTimer / coolDown; } }
+
+    private float airTime = 0.125f;
 
     private uint currentPosition = 1;
-    private bool canMove = true;
+    public bool canMove { get; private set; } = true;
     private bool isJumping = false;
 
     private Player player;
@@ -50,6 +58,9 @@ public class PlayerMovement : MonoBehaviour
                 slidePoints[i] = noteSpawners[i].GetPath().destination;
             }
         }
+
+        coolDown = startingCoolDown;
+        coolDown = Mathf.Clamp(coolDown, minCoolDownTime, maxCoolDownTime);
     }
 
     private void Update()
@@ -64,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(uint index)
     {
+        //if the the place you are moving too is the place is the same as where we are do not MOVE
+        if (slidePoints[currentPosition].localPosition == slidePoints[index].localPosition) return;
         if (!canMove || isJumping)//If you cannot move then don't move
         {
             Debug.Log("You Cannot Move");
@@ -74,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
         currentPosition = index;
         _playerTransform.position = slidePoints[currentPosition].localPosition;
         StartCoroutine(Cooldown());
-        //InvokeMove();
     }
 
     public void Jump()
@@ -82,7 +94,6 @@ public class PlayerMovement : MonoBehaviour
         if (!canMove || isJumping) return;
 
         StartCoroutine("JumpCoroutine");
-        //InvokeMove();
     }
 
     IEnumerator JumpCoroutine()
@@ -102,7 +113,14 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator Cooldown()
     {
         canMove = false;
-        yield return new WaitForSeconds(coolDown);
+        coolDownTimer = coolDown;
+        while (coolDownTimer > 0)
+        {
+            //Debug.Log(coolDownTimerPercent.ToString());
+            coolDownTimer -= Time.deltaTime;
+            yield return null;
+        }
+        coolDownTimer = 0;
         canMove = true;
     }
 
@@ -112,6 +130,17 @@ public class PlayerMovement : MonoBehaviour
 
         currentPosition = 1;
         _playerTransform.position = slidePoints[currentPosition].localPosition;
+    }
+
+    public bool SetCoolDown(float newCoolDown)
+    {
+        if (coolDown <= minCoolDownTime || coolDown >= maxCoolDownTime)
+            return false;
+
+        coolDown = newCoolDown;
+        coolDown = Mathf.Clamp(coolDown, minCoolDownTime, maxCoolDownTime);
+
+        return true;
     }
 
     public void OnPhaseChange(Phase phase)

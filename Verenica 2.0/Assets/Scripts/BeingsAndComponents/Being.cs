@@ -12,7 +12,7 @@ public class Being : MonoBehaviour
 
     protected bool isDead;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         InitializeHP();
     }
@@ -41,10 +41,13 @@ public class Being : MonoBehaviour
     }
 
     //Adds HP
-    public void Heal(int heal)
+    public bool Heal(int heal)
     {
+        if (currentHP >= maxHP || isDead) return false;
+
         currentHP += heal;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        return true;
     }
 
     public void SetHealth(int currHP, int mxHP)

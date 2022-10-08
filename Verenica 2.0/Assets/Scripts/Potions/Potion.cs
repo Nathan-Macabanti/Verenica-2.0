@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Potion : MonoBehaviour
+[System.Serializable]
+public abstract class Potion
 {
-    public abstract void UseMe(GameObject obj);
+    public virtual bool UseMe() { return true; }
+    public virtual bool UseMe(GameObject obj) { return true; }
 }

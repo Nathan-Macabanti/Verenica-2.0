@@ -106,6 +106,13 @@ public static class EventManager
     {
         OnIsShopOpenValueChange?.Invoke(isOpen);
     }
+
+    public delegate void MoneyUpdated();
+    public static event MoneyUpdated OnMoneyUpdated;
+    public static void InvokeOnMoneyUpdated()
+    {
+        OnMoneyUpdated?.Invoke();
+    }
     #endregion
 
     #region COMBO EVENTS

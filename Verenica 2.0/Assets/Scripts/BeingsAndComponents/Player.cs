@@ -11,7 +11,7 @@ public class Player : Being
     #endregion
 
     //private float 
-    private void Start()
+    private void Awake()
     {
         InitializeHP();
         TryToSetPlayerComponents();

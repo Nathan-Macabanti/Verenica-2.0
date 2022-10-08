@@ -19,31 +19,25 @@ public class Shop : MonoBehaviour
         InitializeSingleton();
     }
 
-    private Wallet walletOfBuyer;
-
+    private Wallet _walletOfBuyer;
+    public Wallet WalletOfBuyer { get { return _walletOfBuyer; } }
     [SerializeField] private bool shopIsOpen;
-    [SerializeField] private Stock[] _Shopstocks;
+    //[SerializeField] private Stock[] _Shopstocks;
 
     private void Start()
     {
-        walletOfBuyer = GameManager.GetInstance().Player.playerWallet;
+        _walletOfBuyer = GameManager.GetInstance().Player.playerWallet;
         shopIsOpen = false;
     }
 
-    public void BuyPotion(uint inventoryIndex)
+    public bool BuyMe(int cost)
     {
-        if (!shopIsOpen) return; //Shop is not open
-        if (walletOfBuyer == null) return; //No wallet seen
+        if (!shopIsOpen) { Debug.Log("SHOP IS CLOSED"); return false; } //Shop is not open
+        if (_walletOfBuyer == null) { Debug.Log("NO WALLET"); return false; } //No wallet seen
 
-        //GetMoney from wallet if you cannot then do not
-        Stock stock = _Shopstocks[inventoryIndex];
-        if (!walletOfBuyer.RemoveCurrency(stock.cost)) return;
+        return _walletOfBuyer.RemoveCurrency((int)cost);
 
-        //Use Immediately on player
-        Potion potion = _Shopstocks[inventoryIndex].potion;
-        potion.UseMe(GameManager.GetInstance().Player.gameObject);
     }
-
     #region Opening and Closing Shop
     public void OpenOrCloseShop(bool isOpen)
     {
