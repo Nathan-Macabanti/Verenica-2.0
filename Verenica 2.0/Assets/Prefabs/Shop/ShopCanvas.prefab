@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 5027449930002188037}
   - component: {fileID: 5027449930002188034}
   m_Layer: 5
-  m_Name: Done?
+  m_Name: Done?Btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 5027449931004536678}
   - component: {fileID: 5027449931004536677}
   m_Layer: 5
-  m_Name: BtnPanels
+  m_Name: BtnPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
