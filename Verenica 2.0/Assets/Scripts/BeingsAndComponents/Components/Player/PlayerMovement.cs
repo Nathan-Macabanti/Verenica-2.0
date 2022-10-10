@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         if (slidePoints[currentPosition].localPosition == slidePoints[index].localPosition) return;
         if (!canMove || isJumping)//If you cannot move then don't move
         {
-            Debug.Log("You Cannot Move");
+            //Debug.Log("You Cannot Move");
             return; 
         }
 

@@ -98,12 +98,14 @@
     <Compile Include="Assets\Scripts\GameManagers\EnemyGroup.cs" />
     <Compile Include="Assets\Scripts\UI\Timers\PlayerMonvementCoolDownTimer.cs" />
     <Compile Include="Assets\Scripts\Potions\HealthPotion.cs" />
+    <Compile Include="Assets\Scripts\Charting\Track.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Enemies\Shosple.cs" />
     <Compile Include="Assets\Scripts\UI\Text\MoneyTextScript.cs" />
     <Compile Include="Assets\Scripts\UI\ShopUI.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\PlayerCollider.cs" />
     <Compile Include="Assets\Scripts\Shop\Shop.cs" />
     <Compile Include="Assets\ScriptableObjects\SongInfo\SongInfo.cs" />
+    <Compile Include="Assets\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Potions\Potion.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +123,7 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Lyrics\MovementTutsLyrics.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />

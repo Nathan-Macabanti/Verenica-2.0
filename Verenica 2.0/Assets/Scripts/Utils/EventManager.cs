@@ -123,4 +123,15 @@ public static class EventManager
         OnComboValueChanged?.Invoke(comboNum, letterRank);
     }
     #endregion
+
+    #region SONG MANAGER EVENTS
+    #region SONGISOVER
+    public delegate void SongFinished();
+    public static event SongFinished OnSongFinished;
+    public static void InvokeSongFinished()
+    {
+        OnSongFinished?.Invoke();
+    }
+    #endregion
+    #endregion
 }

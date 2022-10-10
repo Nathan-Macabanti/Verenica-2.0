@@ -36,7 +36,7 @@ public class SongManager : MonoBehaviour
     [HideInInspector] public float BPM;
 
     private bool _isOn = true;
-
+    private bool _surival = false;
     private float _beatTimer;
     private float _dspTimeForBeat;
     #endregion
@@ -65,6 +65,8 @@ public class SongManager : MonoBehaviour
     {
         _radio.SetClip(_songInfo.clip);
         _radio.Play();
+        float beats = _songInfo.clip.length / _secondsPerBeat;
+        Debug.Log($"Beats: {beats}");
     }
     #endregion
 
@@ -89,7 +91,23 @@ public class SongManager : MonoBehaviour
 
     private void CheckIfCanSpawn()
     {
-        if (_nextIndex >= _chartCopy.beats.Length) return; //IF THE INDEX IS GREATER THAN THE AMOUNT IN THE CHART or LESS THAN 0
+        //IF THE INDEX IS GREATER THAN THE AMOUNT IN THE CHART or LESS THAN 0
+        if (_nextIndex >= _chartCopy.beats.Length) 
+        {
+            //If the radio is not playing anything
+            if (!_radio.audioSource.isPlaying)
+            {
+                if (_surival)
+                {
+                    EventManager.InvokeSongFinished();
+                }
+                else
+                {
+                    ResetChart();
+                }
+            }
+            return;
+        }     
         
         //SPAWN 
         float spawnTime = _songPositionInBeats + BeatOffset;
@@ -99,6 +117,14 @@ public class SongManager : MonoBehaviour
             CallSpawnEvent(currentBeat);
             _nextIndex++;
         }
+    }
+
+    private void ResetChart()
+    {
+        _nextIndex = 0;
+        _dspTime = (float)AudioSettings.dspTime;
+        _beatTimer = (float)AudioSettings.dspTime - _dspTimeForBeat;
+        _radio.Play();
     }
 
     private void CallSpawnEvent(float beat)
@@ -161,6 +187,8 @@ public class SongManager : MonoBehaviour
     {
         _radio.Stop();
         _songInfo = phase.songInfo;
+        BeatOffset = phase.beatOffset;
+        _surival = phase.survivalMode;
         _chartCopy = _songInfo.chart;
         InitializeAll();
     }

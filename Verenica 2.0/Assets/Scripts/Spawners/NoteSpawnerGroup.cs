@@ -20,11 +20,13 @@ public class NoteSpawnerGroup : MonoBehaviour
     [Header("Note Prefab")]
     public Note DangerNote;
     public Note SafeNote;
+    public Note JumpNote;
     public Note GimmickNote1;
     public Note GimmickNote2;
 
     public ObjectPool<Note> danger_Note_Pool;
     public ObjectPool<Note> safe_Note_Pool;
+    public ObjectPool<Note> jump_Note_Pool;
     public ObjectPool<Note> gimmick1_Note_Pool;
     public ObjectPool<Note> gimmick2_Note_Pool;
 
@@ -56,6 +58,7 @@ public class NoteSpawnerGroup : MonoBehaviour
     {
         InitializeDangerNotePool();
         InitializeSafeNotePool();
+        InitializeJumpNotePool();
         InitializeGimmickNote1Pool();
         InitializeGimmickNote2Pool();
     }
@@ -101,6 +104,26 @@ public class NoteSpawnerGroup : MonoBehaviour
         }, false, 10, 30);
     }
 
+    private void InitializeJumpNotePool()
+    {
+        if (JumpNote == null) return;
+
+        jump_Note_Pool = new ObjectPool<Note>(() =>
+        {
+            var note = Instantiate(JumpNote);
+            note.SetPool(jump_Note_Pool);
+            return note;
+        }, note =>
+        {
+            note.gameObject.SetActive(true); //OnGet
+        }, note =>
+        {
+            note.gameObject.SetActive(false); //OnRelease
+        }, note =>
+        {
+            Destroy(note.gameObject); //OnDestroy
+        }, false, 10, 30);
+    }
     private void InitializeGimmickNote1Pool()
     {
         if (GimmickNote1 == null) return;
@@ -158,6 +181,11 @@ public class NoteSpawnerGroup : MonoBehaviour
             //Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "SAFE");
             InitializeNote(beat, index, type, safe_Note_Pool);
         }
+        else if (type == NoteType.Jump)
+        {
+            //Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "SAFE");
+            InitializeNote(beat, index, type, jump_Note_Pool);
+        }
         else if (type == NoteType.Gimmick1)
         {
             //Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "SAFE");
@@ -191,6 +219,9 @@ public class NoteSpawnerGroup : MonoBehaviour
     {
         DangerNote = phase.dangerNote;
         SafeNote = phase.safeNote;
+        JumpNote = phase.JumpNote;
+        GimmickNote1 = phase.GimmickNote1;
+        GimmickNote2 = phase.GimmickNote2;
         IntializeAllPool();
     }
 

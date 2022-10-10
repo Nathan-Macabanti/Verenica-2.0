@@ -15,10 +15,10 @@ MonoBehaviour:
   beats:
   - beat: 4.25
     lane_1: 0
-    lane_2: 2
+    lane_2: 3
     lane_3: 0
   - beat: 4.75
-    lane_1: 2
+    lane_1: 3
     lane_2: 0
     lane_3: 0
   - beat: 5.25

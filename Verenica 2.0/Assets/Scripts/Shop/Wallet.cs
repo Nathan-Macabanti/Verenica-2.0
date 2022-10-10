@@ -48,7 +48,7 @@ public class Wallet : MonoBehaviour
 
     private void OnEnemyDied()
     {
-        Debug.Log(owner.CurrentHP);
+        //Debug.Log(owner.CurrentHP);
         AddCurrency(owner.CurrentHP);
     }
 }

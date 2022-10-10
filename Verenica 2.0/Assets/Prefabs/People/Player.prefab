@@ -169,7 +169,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4087037096477778674}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7764defe2c3e8240b8b0e99224306fb, type: 3}
   m_Name: 
@@ -178,6 +178,8 @@ MonoBehaviour:
   image: {fileID: 8069162605593471723}
   spriteRenderer: {fileID: 4399749803958208771}
   playerMovement: {fileID: 5394452147918246726}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
+  cantMoveColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5325053061748306736
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,7 +198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2320040983337591463
 RectTransform:
   m_ObjectHideFlags: 0

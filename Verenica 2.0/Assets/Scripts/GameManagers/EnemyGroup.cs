@@ -31,12 +31,19 @@ public class EnemyGroup : MonoBehaviour
         currentEnemy.InitializeHP();
     }
 
+    public void OnSongOver()
+    {
+        CurrentEnemy.Damage(999999);
+    }
+
     private void OnEnable()
     {
         EventManager.OnPhaseChange += OnPhaseChange;
+        EventManager.OnSongFinished += OnSongOver;
     }
     private void OnDisable()
     {
         EventManager.OnPhaseChange -= OnPhaseChange;
+        EventManager.OnSongFinished -= OnSongOver;
     }
 }

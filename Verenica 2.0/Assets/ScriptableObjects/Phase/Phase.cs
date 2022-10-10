@@ -11,10 +11,13 @@ public class Phase : ScriptableObject
 
     [Header("SongInfo")]
     public SongInfo songInfo;
+    public float beatOffset = 2;
+    public bool survivalMode = false;
 
     [Header("Notes Prefab")]
     public DangerNote dangerNote;
     public SafeNote safeNote;
+    public Note JumpNote;
     public Note GimmickNote1;
     public Note GimmickNote2;
 }
