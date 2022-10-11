@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         _playerTransform = transform;
         if(slidePoints.Length == 0)
         {
-            NoteSpawnerGroup noteSpawnerGroup = FindObjectOfType<NoteSpawnerGroup>();
+            NoteSpawnerGroup noteSpawnerGroup = NoteSpawnerGroup.GetInstance();
             NoteSpawner[] noteSpawners = noteSpawnerGroup.GetNoteSpawners();
             int count = noteSpawners.Length;
             //Debug.Log(count);
@@ -69,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
         if (player.IsDead())
         {
             StopAllCoroutines(); //Will stop all courotines in this class
+            isJumping = false;
+            canMove = false;
             return;
         }    
     }

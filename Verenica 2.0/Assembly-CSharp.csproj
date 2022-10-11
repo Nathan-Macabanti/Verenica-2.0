@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\Shop\Stock.cs" />
     <Compile Include="Assets\Scripts\Potions\AttackPotion.cs" />
     <Compile Include="Assets\Scripts\Debugging\DebugHPText.cs" />
+    <Compile Include="Assets\Scripts\MusicManagement\GameSFX.cs" />
     <Compile Include="Assets\Scripts\Debugging\DebugBeatSparklesSpawner.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Utils\Utils.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Assets\Scripts\Notes\NoteTypes\SafeNote.cs" />
     <Compile Include="Assets\Scripts\Utils\ColorUtils.cs" />
     <Compile Include="Assets\Scripts\Notes\Note.cs" />
+    <Compile Include="Assets\Scripts\MusicManagement\SoundManager.cs" />
     <Compile Include="Assets\Scripts\GameManagers\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameManagers\EnemyGroup.cs" />
     <Compile Include="Assets\Scripts\UI\Timers\PlayerMonvementCoolDownTimer.cs" />
@@ -107,8 +109,6 @@
     <Compile Include="Assets\Scripts\Data\SongInfo.cs" />
     <Compile Include="Assets\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Potions\Potion.cs" />
-    <Compile Include="Assets\Scripts\MusicManagement\SoundManager.cs" />
-    <Compile Include="Assets\Scripts\MusicManagement\GameSFX.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

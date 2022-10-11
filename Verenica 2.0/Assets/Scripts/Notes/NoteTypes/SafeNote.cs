@@ -21,6 +21,7 @@ public class SafeNote : Note
         _comboSystem = ComboSystem.GetInstance();
         _gameManger = GameManager.GetInstance();
     }
+
     private void OnEnable()
     {
         movementState = MovementState.move;

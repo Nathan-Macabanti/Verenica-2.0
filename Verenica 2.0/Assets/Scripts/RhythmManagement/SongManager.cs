@@ -65,8 +65,7 @@ public class SongManager : MonoBehaviour
     {
         _radio.SetClip(_songInfo.clip);
         _radio.Play();
-        float beats = _songInfo.clip.length / _secondsPerBeat;
-        Debug.Log($"Beats: {beats}");
+        Debug.Log($"Beats: {_songInfo.clip.length / _secondsPerBeat}");
     }
     #endregion
 
