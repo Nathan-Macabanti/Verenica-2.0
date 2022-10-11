@@ -70,6 +70,7 @@ public class SafeNote : Note
         if (isDead) return;
         movementState = MovementState.rebound;
         EventManager.InvokePlayerAttack();
+        SoundManager.GetInstance().PlaySound(GameSFX.GetInstance().noteHitSFX);
         //GameManager.GetInstance().GetPlayer().GetPlayerAttack().Attack(target);
     }
 

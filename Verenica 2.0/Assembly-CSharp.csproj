@@ -62,7 +62,7 @@
     <Compile Include="Assets\Scripts\UI\ShopButtons\HealthPotionButton.cs" />
     <Compile Include="Assets\Scripts\Debugging\DebugComboText.cs" />
     <Compile Include="Assets\Scripts\Potions\SpeedPotion.cs" />
-    <Compile Include="Assets\ScriptableObjects\Charts\Chart.cs" />
+    <Compile Include="Assets\Scripts\Data\Chart.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\EnemyCollider.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Enemy.cs" />
     <Compile Include="Assets\Scripts\Shop\Wallet.cs" />
@@ -88,7 +88,7 @@
     <Compile Include="Assets\Scripts\UI\ShopButtons\ShopButton.cs" />
     <Compile Include="Assets\Scripts\Notes\NoteTypes\DangerNote.cs" />
     <Compile Include="Assets\Scripts\Utils\MyMath.cs" />
-    <Compile Include="Assets\ScriptableObjects\Phase\Phase.cs" />
+    <Compile Include="Assets\Scripts\Data\Phase.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Player\PlayerAttack.cs" />
     <Compile Include="Assets\Scripts\Data\Stats.cs" />
     <Compile Include="Assets\Scripts\Notes\NoteTypes\SafeNote.cs" />
@@ -104,9 +104,11 @@
     <Compile Include="Assets\Scripts\UI\ShopUI.cs" />
     <Compile Include="Assets\Scripts\BeingsAndComponents\Components\Collider\PlayerCollider.cs" />
     <Compile Include="Assets\Scripts\Shop\Shop.cs" />
-    <Compile Include="Assets\ScriptableObjects\SongInfo\SongInfo.cs" />
+    <Compile Include="Assets\Scripts\Data\SongInfo.cs" />
     <Compile Include="Assets\CameraMovement.cs" />
     <Compile Include="Assets\Scripts\Potions\Potion.cs" />
+    <Compile Include="Assets\Scripts\MusicManagement\SoundManager.cs" />
+    <Compile Include="Assets\Scripts\MusicManagement\GameSFX.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

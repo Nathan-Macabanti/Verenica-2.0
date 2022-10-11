@@ -37,7 +37,11 @@ public class PlayerAttack : MonoBehaviour
         target.Damage(currentAttackValue);
     }
 
-    //Hit something
+    public void Hit()
+    {
+
+    }
+
     public void ResetAttack()
     {
         currentAttackValue = startingAttackValue;

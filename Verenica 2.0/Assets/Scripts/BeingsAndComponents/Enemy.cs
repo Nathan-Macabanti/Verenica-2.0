@@ -10,6 +10,11 @@ public abstract class Enemy : Being
         InitializeHP();
     }
 
+    public override void Damage(int damage)
+    {
+        base.Damage(damage);
+        SoundManager.GetInstance().PlaySound(GameSFX.GetInstance().enemyHitSFX);
+    }
     protected override void Die()
     {
         isDead = true;

@@ -1524,6 +1524,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5680307724802313665, guid: 6c82d583642f55d40ba63c5cfe2c67fe, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5680307725237403688, guid: 6c82d583642f55d40ba63c5cfe2c67fe, type: 3}
       propertyPath: m_Name
       value: Environment
@@ -1593,6 +1597,10 @@ PrefabInstance:
       propertyPath: _phases.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 45cc752a101eca74f8fefd25e244b624, type: 2}
+    - target: {fileID: 2242068140746285890, guid: 90fa48f13b604f8419bb170a84a98c3f, type: 3}
+      propertyPath: m_Name
+      value: GameSFXs
+      objectReference: {fileID: 0}
     - target: {fileID: 6153536562462089879, guid: 90fa48f13b604f8419bb170a84a98c3f, type: 3}
       propertyPath: BeatOffset
       value: 2

@@ -36,6 +36,7 @@ public class Player : Being
     public override void Damage(int damage)
     {
         base.Damage(damage);
+        SoundManager.GetInstance().PlaySound(GameSFX.GetInstance().playerHitSFX);
         EventManager.InvokePlayerDamaged();
     }
 }

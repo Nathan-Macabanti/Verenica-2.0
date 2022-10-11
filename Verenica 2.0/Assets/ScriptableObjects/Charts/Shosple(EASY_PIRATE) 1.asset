@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ec943ee877c69469888fa3848e803e, type: 3}
+  m_Name: Shosple(EASY_PIRATE) 1
+  m_EditorClassIdentifier: 
+  beats:
+  - beat: 2
+    lane_1: 1
+    lane_2: 2
+    lane_3: 1
+  - beat: 2.25
+    lane_1: 1
+    lane_2: 1
+    lane_3: 2
+  - beat: 3
+    lane_1: 1
+    lane_2: 2
+    lane_3: 1
+  - beat: 3.25
+    lane_1: 2
+    lane_2: 1
+    lane_3: 1
+  - beat: 4
+    lane_1: 2
+    lane_2: 0
+    lane_3: 0
+  - beat: 4.25
+    lane_1: 0
+    lane_2: 1
+    lane_3: 0
+  - beat: 4.5
+    lane_1: 0
+    lane_2: 0
+    lane_3: 1
+  - beat: 4.75
+    lane_1: 1
+    lane_2: 1
+    lane_3: 2
+  - beat: 5
+    lane_1: 1
+    lane_2: 2
+    lane_3: 1
+  - beat: 5.25
+    lane_1: 1
+    lane_2: 0
+    lane_3: 0
+  - beat: 5.5
+    lane_1: 0
+    lane_2: 0
+    lane_3: 1
+  - beat: 5.75
+    lane_1: 1
+    lane_2: 0
+    lane_3: 0
+  - beat: 6
+    lane_1: 1
+    lane_2: 0
+    lane_3: 0
+  - beat: 6.25
+    lane_1: 0
+    lane_2: 2
+    lane_3: 0
+  - beat: 6.5
+    lane_1: 0
+    lane_2: 0
+    lane_3: 1
+  - beat: 6.75
+    lane_1: 0
+    lane_2: 2
+    lane_3: 0
+  - beat: 7
+    lane_1: 1
+    lane_2: 2
+    lane_3: 1
+  - beat: 7.25
+    lane_1: 1
+    lane_2: 1
+    lane_3: 2
+  - beat: 7.5
+    lane_1: 1
+    lane_2: 2
+    lane_3: 1
+  - beat: 7.75
+    lane_1: 2
+    lane_2: 1
+    lane_3: 1
+  - beat: 7.75
+    lane_1: 2
+    lane_2: 1
+    lane_3: 1
+  - beat: 8
+    lane_1: 2
+    lane_2: 1
+    lane_3: 2
+  - beat: 8.25
+    lane_1: 2
+    lane_2: 2
+    lane_3: 1
+  - beat: 8.5
+    lane_1: 2
+    lane_2: 1
+    lane_3: 2
+  - beat: 8.75
+    lane_1: 1
+    lane_2: 2
+    lane_3: 2
+  - beat: 9
+    lane_1: 2
+    lane_2: 0
+    lane_3: 0
+  - beat: 9.125
+    lane_1: 0
+    lane_2: 1
+    lane_3: 0
+  - beat: 9.25
+    lane_1: 0
+    lane_2: 0
+    lane_3: 1
+  - beat: 9.5
+    lane_1: 0
+    lane_2: 1
+    lane_3: 1
+  - beat: 9.75
+    lane_1: 1
+    lane_2: 0
+    lane_3: 1
+  - beat: 10
+    lane_1: 1
+    lane_2: 1
+    lane_3: 0
+  - beat: 10.5
+    lane_1: 0
+    lane_2: 3
+    lane_3: 0
+  - beat: 11.5
+    lane_1: 0
+    lane_2: 3
+    lane_3: 0
+  - beat: 12.5
+    lane_1: 0
+    lane_2: 3
+    lane_3: 0
+  - beat: 12.75
+    lane_1: 2
+    lane_2: 0
+    lane_3: 0
+  - beat: 13
+    lane_1: 0
+    lane_2: 0
+    lane_3: 2
