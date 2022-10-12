@@ -7,8 +7,8 @@ public class DangerNote : Note
     public override void OnPlayerCollided()
     {
         if (isDead) return;
-        Player player = GameManager.GetInstance().GetPlayer();
-        GameManager.GetInstance().GetPlayer().Damage(1);
+        Player player = _gameManger.Player;
+        player.Damage(1);
         ReturnToPool();
     }
 }

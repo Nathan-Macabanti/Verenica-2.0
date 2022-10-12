@@ -7,7 +7,7 @@ public class NoteSpawnerGroup : MonoBehaviour
 {
     #region Singleton
     private static NoteSpawnerGroup instance;
-    private void IntializeSingleton()
+    private void InitializeSingleton()
     {
         if (instance == null) { instance = this; }
         else { Utils.SingletonErrorMessage(this); }
@@ -20,77 +20,153 @@ public class NoteSpawnerGroup : MonoBehaviour
     [Header("Note Prefab")]
     public Note DangerNote;
     public Note SafeNote;
+    public Note JumpNote;
+    public Note GimmickNote1;
+    public Note GimmickNote2;
 
     public ObjectPool<Note> danger_Note_Pool;
     public ObjectPool<Note> safe_Note_Pool;
+    public ObjectPool<Note> jump_Note_Pool;
+    public ObjectPool<Note> gimmick1_Note_Pool;
+    public ObjectPool<Note> gimmick2_Note_Pool;
 
     // Start is called before the first frame update
     void Awake()
     {
-        IntializeSingleton();
+        InitializeSingleton();
         IntializeAllPool();
         InitializeSpawnersArray();
     }
 
     #region Initializers
-        private void InitializeSpawnersArray()
-        {
-            if (spawners.Length != 0) return;
+    private void InitializeSpawnersArray()
+    {
+        if (spawners.Length != 0) return;
 
-            NoteSpawner[] ntSpawners = GetComponentsInChildren<NoteSpawner>();
-            int count = ntSpawners.Length;
-            spawners = new NoteSpawner[count];
-            for (int i = 0; i < count; i++)
-            {
-                spawners[i] = ntSpawners[i];
-            }
-
-        }
-        #region Initialize Pools
-        private void IntializeAllPool()
+        NoteSpawner[] ntSpawners = GetComponentsInChildren<NoteSpawner>();
+        int count = ntSpawners.Length;
+        spawners = new NoteSpawner[count];
+        for (int i = 0; i < count; i++)
         {
-            InitializeDangerNotePool();
-            InitializeSafeNotePool();
+            spawners[i] = ntSpawners[i];
         }
 
-        private void InitializeDangerNotePool()
-        {
-            danger_Note_Pool = new ObjectPool<Note>(() =>
-            {
-                var note = Instantiate(DangerNote);
-                note.SetPool(danger_Note_Pool);
-                return note;
-            }, note =>
-            {
-                note.gameObject.SetActive(true); //OnGet
-            }, note =>
-            {
-                note.gameObject.SetActive(false); //OnRelease
-            }, note =>
-            {
-                Destroy(note.gameObject); //OnDestroy
-            }, false, 10, 30);
-        }
+    }
 
-        private void InitializeSafeNotePool()
+    #region Initialize Pools
+    private void IntializeAllPool()
+    {
+        InitializeDangerNotePool();
+        InitializeSafeNotePool();
+        InitializeJumpNotePool();
+        InitializeGimmickNote1Pool();
+        InitializeGimmickNote2Pool();
+    }
+    private void InitializeDangerNotePool()
+    {
+        if (DangerNote == null) return;
+
+        danger_Note_Pool = new ObjectPool<Note>(() =>
         {
-            safe_Note_Pool = new ObjectPool<Note>(() =>
-            {
-                var note = Instantiate(SafeNote);
-                note.SetPool(safe_Note_Pool);
-                return note;
-            }, note =>
-            {
-                note.gameObject.SetActive(true); //OnGet
-            }, note =>
-            {
-                note.gameObject.SetActive(false); //OnRelease
-            }, note =>
-            {
-                Destroy(note.gameObject); //OnDestroy
-            }, false, 10, 30);
-        }
-        #endregion
+            var note = Instantiate(DangerNote);
+            note.SetPool(danger_Note_Pool);
+            return note;
+        }, note =>
+        {
+            note.gameObject.SetActive(true); //OnGet
+        }, note =>
+        {
+            note.gameObject.SetActive(false); //OnRelease
+        }, note =>
+        {
+            Destroy(note.gameObject); //OnDestroy
+        }, false, 10, 30);
+    }
+
+    private void InitializeSafeNotePool()
+    {
+        if (SafeNote == null) return;
+
+        safe_Note_Pool = new ObjectPool<Note>(() =>
+        {
+            var note = Instantiate(SafeNote);
+            note.SetPool(safe_Note_Pool);
+            return note;
+        }, note =>
+        {
+            note.gameObject.SetActive(true); //OnGet
+        }, note =>
+        {
+            note.gameObject.SetActive(false); //OnRelease
+        }, note =>
+        {
+            Destroy(note.gameObject); //OnDestroy
+        }, false, 10, 30);
+    }
+
+    private void InitializeJumpNotePool()
+    {
+        if (JumpNote == null) return;
+
+        jump_Note_Pool = new ObjectPool<Note>(() =>
+        {
+            var note = Instantiate(JumpNote);
+            note.SetPool(jump_Note_Pool);
+            return note;
+        }, note =>
+        {
+            note.gameObject.SetActive(true); //OnGet
+        }, note =>
+        {
+            note.gameObject.SetActive(false); //OnRelease
+        }, note =>
+        {
+            Destroy(note.gameObject); //OnDestroy
+        }, false, 10, 30);
+    }
+    private void InitializeGimmickNote1Pool()
+    {
+        if (GimmickNote1 == null) return;
+
+        gimmick1_Note_Pool = new ObjectPool<Note>(() =>
+        {
+            var note = Instantiate(GimmickNote1);
+            note.SetPool(gimmick1_Note_Pool);
+            return note;
+        }, note =>
+        {
+            note.gameObject.SetActive(true); //OnGet
+        }, note =>
+        {
+            note.gameObject.SetActive(false); //OnRelease
+        }, note =>
+        {
+            Destroy(note.gameObject); //OnDestroy
+        }, false, 10, 30);
+    }
+
+    private void InitializeGimmickNote2Pool()
+    {
+        if (DangerNote == null) return;
+
+        gimmick2_Note_Pool = new ObjectPool<Note>(() =>
+        {
+            var note = Instantiate(GimmickNote2);
+            note.SetPool(gimmick2_Note_Pool);
+            return note;
+        }, note =>
+        {
+            note.gameObject.SetActive(true); //OnGet
+        }, note =>
+        {
+            note.gameObject.SetActive(false); //OnRelease
+        }, note =>
+        {
+            Destroy(note.gameObject); //OnDestroy
+        }, false, 10, 30);
+    }
+
+    #endregion
     #endregion
 
     public void Spawn(float beat, int index, NoteType type)
@@ -104,6 +180,21 @@ public class NoteSpawnerGroup : MonoBehaviour
         {
             //Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "SAFE");
             InitializeNote(beat, index, type, safe_Note_Pool);
+        }
+        else if (type == NoteType.Jump)
+        {
+            //Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "SAFE");
+            InitializeNote(beat, index, type, jump_Note_Pool);
+        }
+        else if (type == NoteType.Gimmick1)
+        {
+            //Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "SAFE");
+            InitializeNote(beat, index, type, gimmick1_Note_Pool);
+        }
+        else if (type == NoteType.Gimmick2)
+        {
+            //Debug.Log("Spawner " + index.ToString() + " " + beat.ToString() + "SAFE");
+            InitializeNote(beat, index, type, gimmick2_Note_Pool);
         }
     }
 
@@ -124,13 +215,25 @@ public class NoteSpawnerGroup : MonoBehaviour
         note.initialize(path, beat, key);
     }
 
+    public void OnPhaseChange(Phase phase)
+    {
+        DangerNote = phase.dangerNote;
+        SafeNote = phase.safeNote;
+        JumpNote = phase.JumpNote;
+        GimmickNote1 = phase.GimmickNote1;
+        GimmickNote2 = phase.GimmickNote2;
+        IntializeAllPool();
+    }
+
     private void OnEnable()
     {
+        EventManager.OnPhaseChange += OnPhaseChange;
         EventManager.OnNoteSpawn += Spawn;
     }
 
     private void OnDisable()
     {
+        EventManager.OnPhaseChange -= OnPhaseChange;
         EventManager.OnNoteSpawn -= Spawn;
     }
 

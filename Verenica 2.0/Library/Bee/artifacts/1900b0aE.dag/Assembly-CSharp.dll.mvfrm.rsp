@@ -22,6 +22,9 @@ Library\Bee\artifacts\mvdfrm\Unity.InternalAPIEditorBridge.001.ref.dll_C275F416F
 Library\Bee\artifacts\mvdfrm\Unity.InternalAPIEngineBridge.001.ref.dll_B4F0ACC15A996E43.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Mathematics.Editor.ref.dll_9A20CFD48BC11F43.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Mathematics.ref.dll_E8EFDB1B8D5C174E.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.MemoryProfiler.Editor.MemoryProfilerModule.ref.dll_9E56BDBCBF68EBA1.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.MemoryProfiler.Editor.ref.dll_CB0D5363E6A86359.mvfrm
+Library\Bee\artifacts\mvdfrm\Unity.MemoryProfiler.ref.dll_B196C2D9333A09D8.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Performance.Profile-Analyzer.Editor.ref.dll_65A192712782EB2B.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.PlasticSCM.Editor.ref.dll_257AEB342BE77856.mvfrm
 Library\Bee\artifacts\mvdfrm\Unity.Rider.Editor.ref.dll_9B5591808ABA37AF.mvfrm

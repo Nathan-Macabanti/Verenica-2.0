@@ -15,8 +15,16 @@ public static class EventManager
                     OnGameIsOver?.Invoke(winstate);
                 }
             #endregion
-            #region LOSE EVENT
-                    public delegate void Lose();
+            #region GAME STATE CHANGED
+            public delegate void GameStateChanged(GameState gameState);
+            public static event GameStateChanged OnGameStateChanged;
+            public static void InvokeGameStateChanged(GameState gameState)
+            {
+                OnGameStateChanged?.Invoke(gameState);
+            }
+            #endregion
+    #region LOSE EVENT
+    public delegate void Lose();
                     public static event Lose OnLose;
                     public static void InvokeLose()
                     {
@@ -88,6 +96,42 @@ public static class EventManager
         {
         OnPlayerAttack?.Invoke();
         }
-        #endregion
+    #endregion
+    #endregion
+
+    #region SHOP EVENT
+    public delegate void IsShopOpenValueChange(bool isOpen);
+    public static event IsShopOpenValueChange OnIsShopOpenValueChange;
+    public static void InvokeOnIsShopOpenValueChange(bool isOpen)
+    {
+        OnIsShopOpenValueChange?.Invoke(isOpen);
+    }
+
+    public delegate void MoneyUpdated();
+    public static event MoneyUpdated OnMoneyUpdated;
+    public static void InvokeOnMoneyUpdated()
+    {
+        OnMoneyUpdated?.Invoke();
+    }
+    #endregion
+
+    #region COMBO EVENTS
+    public delegate void ComboValueChanged(uint comboNum, string letterRank);
+    public static event ComboValueChanged OnComboValueChanged;
+    public static void InvokeComboValueChanged(uint comboNum, string letterRank)
+    {
+        OnComboValueChanged?.Invoke(comboNum, letterRank);
+    }
+    #endregion
+
+    #region SONG MANAGER EVENTS
+    #region SONGISOVER
+    public delegate void SongFinished();
+    public static event SongFinished OnSongFinished;
+    public static void InvokeSongFinished()
+    {
+        OnSongFinished?.Invoke();
+    }
+    #endregion
     #endregion
 }

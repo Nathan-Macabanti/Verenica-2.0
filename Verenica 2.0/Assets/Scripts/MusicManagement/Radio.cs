@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class Radio : MonoBehaviour
 {
-    private AudioSource audioSource;
+    [Tooltip("If not working just directly plug the audioSource")]
+    public AudioSource audioSource;
 
     private void Awake()
     {

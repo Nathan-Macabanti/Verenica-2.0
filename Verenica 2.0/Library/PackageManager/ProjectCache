@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637999342177415405
-    m_Hash: 1937972774
+      ticks: 638008341021493968
+    m_Hash: 228040178
   m_LockFileStatus:
     m_FilePath: C:/Users/Nathan/Documents/GitHub/Verenica-2.0/Verenica 2.0/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637999342177525134
-    m_Hash: 3819006875
+      ticks: 638008341021553801
+    m_Hash: 3314880838
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -631,10 +631,12 @@ m_ResolvedPackages:
     - 1.3.0
     - 1.4.1
     - 1.4.2
+    - 1.4.3
     compatible:
     - 1.4.1
     - 1.4.2
-    verified: 1.4.2
+    - 1.4.3
+    verified: 1.4.3
   dependencies:
   - name: com.unity.modules.uielements
     version: 1.0.0
@@ -677,6 +679,140 @@ m_ResolvedPackages:
     path: 
   unityLifecycle:
     version: 1.4.1
+    nextVersion: 
+- packageId: com.unity.memoryprofiler@0.7.1-preview.1
+  testable: 0
+  isDirectDependency: 1
+  version: 0.7.1-preview.1
+  source: 1
+  resolvedPath: C:\Users\Nathan\Documents\GitHub\Verenica-2.0\Verenica 2.0\Library\PackageCache\com.unity.memoryprofiler@0.7.1-preview.1
+  assetPath: Packages/com.unity.memoryprofiler
+  name: com.unity.memoryprofiler
+  displayName: Memory Profiler
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: The Memory Profiler offers a unified solution allowing you to profile
+    both small projects on mobile devices and big AAA projects on high end machines.
+    It provides actionable information about allocations in the engine to allow developers
+    to manage and reduce memory usage.
+  status: 4
+  errors: []
+  versions:
+    all:
+    - 0.1.0-preview.1
+    - 0.1.0-preview.2
+    - 0.1.0-preview.3
+    - 0.1.0-preview.4
+    - 0.1.0-preview.5
+    - 0.1.0-preview.6
+    - 0.1.0-preview.7
+    - 0.1.0-preview.8
+    - 0.1.0-preview.9
+    - 0.2.0-preview.1
+    - 0.2.1-preview.1
+    - 0.2.1-preview.2
+    - 0.2.2-preview.1
+    - 0.2.3-preview.1
+    - 0.2.3-preview.2
+    - 0.2.4-preview.1
+    - 0.2.5-preview.1
+    - 0.2.6-preview.1
+    - 0.2.7-preview.1
+    - 0.2.8-preview.1
+    - 0.2.8-preview.2
+    - 0.2.9-preview.1
+    - 0.2.9-preview.3
+    - 0.2.10-preview.1
+    - 0.4.0-preview.1
+    - 0.4.0-preview.2
+    - 0.4.1-preview.1
+    - 0.4.2-preview.1
+    - 0.4.3-preview.1
+    - 0.4.4-preview.2
+    - 0.5.0-preview.1
+    - 0.5.1-preview.1
+    - 0.6.0-preview.1
+    - 0.7.0-preview.1
+    - 0.7.0-preview.2
+    - 0.7.1-preview.1
+    - 1.0.0-pre.1
+    - 1.0.0-pre.2
+    - 1.0.0-pre.3
+    - 1.0.0
+    compatible:
+    - 0.1.0-preview.1
+    - 0.1.0-preview.2
+    - 0.1.0-preview.3
+    - 0.1.0-preview.4
+    - 0.1.0-preview.5
+    - 0.1.0-preview.6
+    - 0.1.0-preview.7
+    - 0.1.0-preview.8
+    - 0.1.0-preview.9
+    - 0.2.0-preview.1
+    - 0.2.1-preview.1
+    - 0.2.1-preview.2
+    - 0.2.2-preview.1
+    - 0.2.3-preview.1
+    - 0.2.3-preview.2
+    - 0.2.4-preview.1
+    - 0.2.5-preview.1
+    - 0.2.6-preview.1
+    - 0.2.7-preview.1
+    - 0.2.8-preview.1
+    - 0.2.8-preview.2
+    - 0.2.9-preview.1
+    - 0.2.9-preview.3
+    - 0.2.10-preview.1
+    - 0.4.0-preview.1
+    - 0.4.0-preview.2
+    - 0.4.1-preview.1
+    - 0.4.2-preview.1
+    - 0.4.3-preview.1
+    - 0.4.4-preview.2
+    - 0.5.0-preview.1
+    - 0.5.1-preview.1
+    - 0.6.0-preview.1
+    - 0.7.0-preview.1
+    - 0.7.0-preview.2
+    - 0.7.1-preview.1
+    verified: 
+  dependencies:
+  - name: com.unity.editorcoroutines
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.editorcoroutines
+    version: 1.0.0
+  keywords:
+  - profiler
+  - memory
+  - memoryprofiler
+  - snapshot
+  - profiling
+  - tool
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 637907255460000000
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.memoryprofiler.git
+    revision: 2d8bf7d2ec50db575f8b6920ef9fc8b898b709da
+    path: 
+  unityLifecycle:
+    version: 
     nextVersion: 
 - packageId: com.unity.test-framework@1.1.31
   testable: 0
@@ -4264,6 +4400,7 @@ m_ResolvedPackages:
     - 4.0.4
     - 4.1.0
     - 4.2.0
+    - 4.2.1
     - 5.0.0-pre.1
     - 5.0.0-pre.2
     - 5.0.0
@@ -4274,14 +4411,20 @@ m_ResolvedPackages:
     - 6.0.1
     - 6.0.2
     - 6.0.3
+    - 6.0.4
+    - 6.0.5
     - 7.0.0-pre.3
     - 7.0.0-pre.4
     - 7.0.0
+    - 7.0.1
     - 8.0.0-pre.1
     - 8.0.0-pre.2
+    - 8.0.0
     compatible:
     - 6.0.3
-    verified: 6.0.3
+    - 6.0.4
+    - 6.0.5
+    verified: 6.0.5
   dependencies:
   - name: com.unity.2d.sprite
     version: 1.0.0

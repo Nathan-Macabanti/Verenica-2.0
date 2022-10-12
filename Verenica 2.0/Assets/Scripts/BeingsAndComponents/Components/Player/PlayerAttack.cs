@@ -10,7 +10,10 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private int maxAttackValue;
     #region Current Attack Value
     private int currentAttackValue;
-    public int CurrentAttackValue { get { return currentAttackValue; } }
+    public int CurrentAttackValue { 
+        get { return currentAttackValue; }
+        set { currentAttackValue = value; }
+    }
     #endregion
     private Player player;
 
@@ -24,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     public void InitializeAttack()
     {
         currentAttackValue = startingAttackValue;
-        currentAttackValue = Mathf.Clamp(currentAttackValue, 0, maxAttackValue);
+        currentAttackValue = Mathf.Clamp(currentAttackValue, 1, maxAttackValue);
     }
 
     //Attack the target directly
@@ -34,8 +37,14 @@ public class PlayerAttack : MonoBehaviour
         target.Damage(currentAttackValue);
     }
 
-    //Hit something
     public void Hit()
     {
+
+    }
+
+    public void ResetAttack()
+    {
+        currentAttackValue = startingAttackValue;
+        currentAttackValue = Mathf.Clamp(currentAttackValue, 1, maxAttackValue);
     }
 }

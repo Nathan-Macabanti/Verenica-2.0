@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class Player : Being
 {
     #region Player Attack
-    private PlayerAttack playerAttack;
-    public PlayerAttack GetPlayerAttack() { return playerAttack; }
-    #endregion
-    #region Player Movement
-    private PlayerMovement playerMovement;
-    public PlayerMovement GetPlayerMovement() { return playerMovement; }
+    public PlayerAttack playerAttack { get; private set; }
+    public PlayerMovement playerMovement { get; private set; }
+    public Wallet playerWallet { get; private set; }
+
+    public Animator playerAnimator { get; private set; }
     #endregion
 
     //private float 
-    private void Start()
+    private void Awake()
     {
         InitializeHP();
         TryToSetPlayerComponents();
@@ -30,17 +30,20 @@ public class Player : Being
         {
             playerMovement = pMovement;
         }
+        if(TryGetComponent<Wallet>(out Wallet wallet))
+        {
+            playerWallet = wallet;
+        }
+        if(TryGetComponent<Animator>(out Animator pAnimator))
+        {
+            playerAnimator = pAnimator;
+        }
     }
 
     public override void Damage(int damage)
     {
         base.Damage(damage);
+        SoundManager.GetInstance().PlaySound(GameSFX.GetInstance().playerHitSFX);
         EventManager.InvokePlayerDamaged();
-    }
-
-    protected override void Die()
-    {
-        isDead = true;
-        //base.Die();
     }
 }

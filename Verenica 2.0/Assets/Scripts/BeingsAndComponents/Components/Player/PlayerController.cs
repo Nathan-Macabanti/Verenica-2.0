@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerMovement playerMovement;
     public InputAction playerControls;
-
+    Keyboard keyboard;
     private void OnEnable()
     {
         playerControls.Enable();
@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(this.TryGetComponent<PlayerMovement>(out PlayerMovement _playerMovement))
+        keyboard = Keyboard.current;
+        if (this.TryGetComponent<PlayerMovement>(out PlayerMovement _playerMovement))
         {
             this.playerMovement = _playerMovement;
         }
@@ -32,11 +33,22 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
-        var keyboard = Keyboard.current;
         if (keyboard == null)
         {
             throw new System.Exception("No Keyboard");
         }
+
+        if (keyboard.pKey.wasPressedThisFrame)
+        {
+            EventManager.InvokeGameStateChanged(GameState.paused);
+        }
+        else if (keyboard.rKey.wasPressedThisFrame)
+        {
+            EventManager.InvokeGameStateChanged(GameState.playing);
+        }
+        
+        //Debug.Log(GameManager.GetInstance().GameState);
+        //if (GameManager.GetInstance().GameState != GameState.playing) return;
 
         if (keyboard.leftArrowKey.wasPressedThisFrame || keyboard.aKey.wasPressedThisFrame)
         {

@@ -4,30 +4,42 @@ using UnityEngine;
 
 public class SafeNote : Note
 {
-    [SerializeField] private float speed;
-    private bool _hasReachedLine;
+    private float speed = 30.0f;
     
     //For movement
-    enum MovementState { move, rebound }
-    MovementState movementState;
+    protected enum MovementState { move, rebound }
+    protected MovementState movementState;
 
-    private PlayerAttack _pAttack;
-    
-    Enemy target;
+    protected PlayerAttack _pAttack;
+
+    protected Enemy _target;
+
+    private void Start()
+    {
+        _transform = transform;
+        _songManager = SongManager.GetInstance();
+        _comboSystem = ComboSystem.GetInstance();
+        _gameManger = GameManager.GetInstance();
+    }
+
     private void OnEnable()
     {
-        _hasReachedLine = false;
         movementState = MovementState.move;
-        target = GameManager.GetInstance().GetEnemy();
+        EnemyGroup _enemyGroup = EnemyGroup.GetInstance();
+        _target = _enemyGroup.CurrentEnemy;
         EventManager.OnGameIsOver += OnGameOver;
-        //CollisionPlayerToNote.OnSafeNoteHit += OnPlayerCollided;
+        EventManager.OnEnemyDied += ReturnToPool;
     }
 
     private void OnDisable()
     {
-        target = null;
+        _target = null;
+        if(movementState == MovementState.move)
+        {
+            _comboSystem.ResetCollectedNote();
+        }
         EventManager.OnGameIsOver -= OnGameOver;
-        //CollisionPlayerToNote.OnSafeNoteHit -= OnPlayerCollided;
+        EventManager.OnEnemyDied -= ReturnToPool;
     }
 
     private void FixedUpdate()
@@ -35,7 +47,7 @@ public class SafeNote : Note
         CheckMoveState();
     }
 
-    private void CheckMoveState()
+    protected void CheckMoveState()
     {
         if (movementState == MovementState.move)
             Move();
@@ -43,65 +55,14 @@ public class SafeNote : Note
             Rebound();
     }
 
-    public override void Move()
-    {
-        if (path.source == null) return;
-        if (path.destination == null) return;
-
-        //Caluclate the distance and time you need to travel to the destination so that you will land on beat
-        float songPosInBeats = _songManager.GetSongPositionInBeats();
-        float beatOffset = _songManager.BeatOffset;
-        float timeToDestinationInBeats = (beat - songPosInBeats);
-        float distancePercent = (beatOffset - timeToDestinationInBeats) / beatOffset;
-
-        //If off-screen
-        if (distancePercent >= 1.5f)
-        {
-            ReturnToPool();
-        }
-
-        //Interpolate the Note
-        Vector3 source = this.path.source.position;
-        Vector3 destination = this.path.destination.position;
-
-        if (distancePercent <= 1.0f)
-        {
-            //Interpolate to the beat line
-            _transform.position = Vector3.Lerp(source, destination, distancePercent);
-        }
-        else
-        {
-            //Keep moving offscreen at the same velocity as going to the beat line
-            float dDistanceX = destination.x + (destination.x - source.x);
-            float dDistanceY = destination.y + (destination.y - source.y);
-            float dDistanceZ = destination.z + (destination.z - source.z);
-            Vector3 doubleDestination = new Vector3(dDistanceX, dDistanceY, dDistanceZ);
-            _transform.position = Vector3.Lerp(destination, doubleDestination, distancePercent - 1.0f); //-1 to reset distancePercent to 0.0f
-
-            //When the note touches the line once
-            OnDestinationReached();
-        }
-    }
-
-    private void OnDestinationReached()
-    {
-        //If the line has already entered dont continue
-        if (_hasReachedLine) return;
-
-        //Reset the Combo
-        _comboSystem.ResetCollectedNote();
-
-        //Declare you already reached the line
-        _hasReachedLine = true;
-    }
-
-    private void Rebound()
+    protected void Rebound()
     {
         //Make it hit the enemy on beat later
-        if (target == null) return;
+        if (_target == null) return;
 
+        EnemyGroup _enemyGroup = EnemyGroup.GetInstance();
         var step = speed * Time.fixedDeltaTime;
-        _transform.position = Vector3.MoveTowards(transform.position, target.transform.position, step);
+        _transform.position = Vector3.MoveTowards(transform.position, _enemyGroup.transform.position, step);
     }
 
     #region OnCollided
@@ -110,13 +71,14 @@ public class SafeNote : Note
         if (isDead) return;
         movementState = MovementState.rebound;
         EventManager.InvokePlayerAttack();
+        SoundManager.GetInstance().PlaySound(GameSFX.GetInstance().noteHitSFX);
         //GameManager.GetInstance().GetPlayer().GetPlayerAttack().Attack(target);
     }
 
     public void OnEnemyCollided()
     {
-        PlayerAttack pAttack = GameManager.GetInstance().GetPlayer().GetPlayerAttack();
-        target.Damage(pAttack.CurrentAttackValue * (int)ComboSystem.GetInstance().Multiplier);
+        PlayerAttack pAttack = _gameManger.Player.playerAttack;
+        _target.Damage(pAttack.CurrentAttackValue * (int)ComboSystem.GetInstance().Multiplier);
         ReturnToPool();
     }
     #endregion

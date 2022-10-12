@@ -8,20 +8,20 @@ public class Being : MonoBehaviour
     [SerializeField] private int startingHP = 3;
     [SerializeField] protected int maxHP = 3;
     protected int currentHP;
-    public int GetCurrentHP() { return currentHP; }
+    public int CurrentHP { get{ return currentHP; } }
 
     protected bool isDead;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         InitializeHP();
-        isDead = false;
     }
 
-    protected virtual void InitializeHP()
+    public virtual void InitializeHP()
     {
         currentHP = startingHP;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        isDead = false;
         //Debug.Log(gameObject.name + " " + startingHP.ToString());
     }
 
@@ -29,7 +29,7 @@ public class Being : MonoBehaviour
     {
         currentHP -= damage;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
-        //Debug.Log(gameObject.name + ": " + currentHP);
+        //Debug.Log($"{gameObject.name} : {damage}");
         //If your HP is 0 die
         if (currentHP <= 0)
             Die();
@@ -41,16 +41,25 @@ public class Being : MonoBehaviour
     }
 
     //Adds HP
-    public void Heal(int heal)
+    public bool Heal(int heal)
     {
+        if (currentHP >= maxHP || isDead) return false;
+
         currentHP += heal;
         currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+        return true;
     }
 
-    public void SetHealth(int currHealth, int maxHealth)
+    public void SetHealth(int currHP, int mxHP)
     {
-        currentHP = currHealth;
-        maxHP = maxHealth;
+        currentHP = currHP;
+        maxHP = mxHP;
+        currentHP = Mathf.Clamp(currentHP, 0, maxHP);
+
+        if (currentHP <= 0)
+            Die();
+        else
+            isDead = false;
     }
     public bool IsDead() { return isDead; }
 }

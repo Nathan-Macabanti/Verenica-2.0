@@ -36,7 +36,7 @@ public class EnemyCollider : MonoBehaviour //MyCollider just incase this also do
 #endif
     #endregion
 
-    private void Start()
+    private void OnEnable()
     {
         InitalizeRequiredComponents();
     }

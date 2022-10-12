@@ -14,3 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 7116483829958984792, guid: 47863ec914b38b648a3cf931d1e0ed84, type: 3}
   songInfo: {fileID: 11400000, guid: f1db854c69acbca4e962951710306f2c, type: 2}
+  beatOffset: 1.5
+  survivalMode: 0
+  dangerNote: {fileID: 2635829180454675019, guid: 73f368c3396cf7747965a24917fcb8c7, type: 3}
+  safeNote: {fileID: 1956020572647224516, guid: c7e09eb9412bafc4bb0368f038ca77d4, type: 3}
+  JumpNote: {fileID: 1125967951503115949, guid: fe96cd9146000584a979d46152163005, type: 3}
+  GimmickNote1: {fileID: 2635829180454675019, guid: 6eead046827888f4f9d8d8714af0a811, type: 3}
+  GimmickNote2: {fileID: 2088140009702343416, guid: afcab70b5ca95684a9c366712f73d231, type: 3}

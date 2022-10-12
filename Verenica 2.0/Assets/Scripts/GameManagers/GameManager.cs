@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum WinState { win, lose, none }
+public enum GameState { playing, paused, ended }
 
 public class GameManager : MonoBehaviour
 {
@@ -18,64 +19,90 @@ public class GameManager : MonoBehaviour
 
 
     #region Variables
-    [Tooltip("Slow")]
-    [Header("Find Player and Enemy by name")]
-    [SerializeField] private string PlayerName;
-    [SerializeField] private string EnemyName;
-
-    [Header("Manually set Player and Enemy")]
+    [Header("Manually set player")]
     #region Player
     [SerializeField] private Player _player;
+    public Player Player { get { return _player; } }
     #endregion
-    #region Enemy
-    [SerializeField] private Enemy _enemy;
-    #endregion
-    public Player GetPlayer() { return _player; }
-    public Enemy GetEnemy() { return _enemy; }
 
-    private WinState _winState = WinState.none;
-    private bool gameIsOver = false;
+    private GameState _gameState;
+    public GameState GameState { 
+        get { return _gameState; } 
+        set 
+        { 
+            _gameState = value;
+            CheckIfGameStateValueChanged();
+        } 
+    }
+    public WinState _winState { get; private set; } = WinState.none;
+    //private bool gameIsOver = false;
+
     #endregion
 
     private void Awake()
     {
         IntializeSingleton();
+        Initialize();
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        GameObject temp;
+        
+    }
+
+    private void Initialize()
+    {
         if(_player == null)
         {
+            _player = GameObject.FindObjectOfType<Player>();
+        }
+        #if false
+        GameObject temp;
+        if (_player == null)
+        {
             temp = GameObject.FindGameObjectWithTag(PlayerName);
-            if(temp.TryGetComponent<Player>(out Player p))
+            if (temp.TryGetComponent<Player>(out Player p))
             {
                 _player = p;
             }
         }
+        #endif
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!gameIsOver)
+        CheckIfWin();
+    }
+
+    void CheckIfWin()
+    {
+        //If game is not over, the winState is neither Win or Lose
+        if (_winState == WinState.none)
         {
+            //If incase of tie, Win takes priority
             Win();
             Lose();
         }
     }
 
-    #region Methods
-    #region WinAndLoseChecker
+    void CheckIfGameStateValueChanged()
+    {
+        EventManager.InvokeGameStateChanged(_gameState);
+    }
+
+#region Methods
+#region WinAndLoseChecker
     public void Win()
     {
-        if (_enemy.IsDead())
+        //If there is no more Phases, and the current Enemy is dead
+        if (PhaseManager.GetInstance().QueueIsEmpty() && EnemyGroup.GetInstance().CurrentEnemy.IsDead())
         {
             _winState = WinState.win;
-            gameIsOver = true;
             EventManager.InvokeGameOver(_winState);
             Debug.Log("You Win");
-            //EventManager.InvokeWin();
+            //gameIsOver = true;
         }
     }
 
@@ -84,49 +111,19 @@ public class GameManager : MonoBehaviour
         if (_player.IsDead())
         {
             _winState = WinState.lose;
-            gameIsOver = true;
             EventManager.InvokeGameOver(_winState);
             Debug.Log("You Lose");
-            //EventManager.InvokeLose();
+            //gameIsOver = true;
         }
     }
-    #endregion
-    #region Setters
-    #region Player
+#endregion
+#region Setters
+#region Player
     public void SetPlayer(Player player)
     {
         _player = player;
     }
-    #endregion
-    #region Enemy
-    public void SetEnemy(Enemy enemy)
-    {
-        _enemy = enemy;
-    }
-
-    public void SetEnemy(Phase phase)
-    {
-        _enemy = phase.enemy;
-    }
-
-    public void SetEnemyThroughPhaseManager()
-    {
-        PhaseManager phaseManager = PhaseManager.GetInstance();
-        _enemy = PhaseManager.GetInstance().CurrentPhase.enemy;
-    }
-    #endregion
-    #endregion
-    #endregion
-
-    private void OnEnable()
-    {
-        EventManager.OnPhaseChange += SetEnemy;
-    }
-
-    private void OnDisable()
-    {
-        EventManager.OnPhaseChange -= SetEnemy;
-    }
-
-    public WinState GetWinState() { return _winState; }
+#endregion
+#endregion
+#endregion
 }
