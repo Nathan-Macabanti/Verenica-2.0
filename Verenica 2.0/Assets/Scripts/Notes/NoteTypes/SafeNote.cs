@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SafeNote : Note
 {
-    private float speed = 30.0f;
+    private float speed = 60.0f;
     
     //For movement
     protected enum MovementState { move, rebound }
@@ -36,7 +36,7 @@ public class SafeNote : Note
         _target = null;
         if(movementState == MovementState.move)
         {
-            _comboSystem.ResetCollectedNote();
+            _comboSystem.LoseNote();
         }
         EventManager.OnGameIsOver -= OnGameOver;
         EventManager.OnEnemyDied -= ReturnToPool;

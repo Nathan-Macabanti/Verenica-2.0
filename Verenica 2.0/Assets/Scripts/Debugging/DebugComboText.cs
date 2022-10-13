@@ -27,7 +27,7 @@ public class DebugComboText : MonoBehaviour
         EventManager.OnComboValueChanged -= OnComboValueChanged;
     }
 
-    public void OnComboValueChanged(uint combo, string letterRank)
+    public void OnComboValueChanged(int combo, string letterRank)
     {
         if (combo == 0) comboTxt.text = " ";
 

@@ -19,8 +19,9 @@ public class ComboSystem : MonoBehaviour
 
     #region Collected Notes
 
-    private uint collectedNotes = 0;
-    public uint CollectedNotes { 
+    private int collectedNotes = 0;
+    private int loseValue = 1;
+    public int CollectedNotes { 
         get { return collectedNotes; }
         set 
         {
@@ -110,11 +111,27 @@ public class ComboSystem : MonoBehaviour
     public void CollectNote()
     {
         CollectedNotes++;
-        CollectedNotes = (uint)Mathf.Clamp(collectedNotes, 0, maxCollectionThreshold);
+        loseValue--;
+        loseValue = (int)Mathf.Clamp(loseValue, 0, Mathf.Infinity);
+        CollectedNotes = (int)Mathf.Clamp(collectedNotes, 0, maxCollectionThreshold);
     }
 
     public void ResetCollectedNote()
     {
         collectedNotes = 0;
+        loseValue = 1;
+    }
+
+    public void LoseNote()
+    {
+        if(collectedNotes == 0)
+        {
+            loseValue = 1;
+        }
+
+        CollectedNotes -= loseValue;
+        loseValue++;
+
+        CollectedNotes = (int)Mathf.Clamp(collectedNotes, 0, maxCollectionThreshold);
     }
 }

@@ -116,9 +116,9 @@ public static class EventManager
     #endregion
 
     #region COMBO EVENTS
-    public delegate void ComboValueChanged(uint comboNum, string letterRank);
+    public delegate void ComboValueChanged(int comboNum, string letterRank);
     public static event ComboValueChanged OnComboValueChanged;
-    public static void InvokeComboValueChanged(uint comboNum, string letterRank)
+    public static void InvokeComboValueChanged(int comboNum, string letterRank)
     {
         OnComboValueChanged?.Invoke(comboNum, letterRank);
     }
